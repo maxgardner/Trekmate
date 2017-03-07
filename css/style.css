@@ -1,0 +1,17 @@
+
+
+h1 {
+	text-align: center;
+	background-color: lightblue;
+
+}
+
+nav {
+	background-color: orange;
+}
+
+.card {
+	max-height: 300px;
+	max-width: 300px;
+
+}
