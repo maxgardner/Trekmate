@@ -3,24 +3,24 @@
     <head>
       <!--Import Google Icon Font-->
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      
-      <link type="text/css" rel="stylesheet" href="css/style.css"/>
+      <link type="text/css" rel="stylesheet" href="assets/css/style.css"/>
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
        <!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
 
+      <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script> 
       <!-- Compiled and minified JavaScript -->
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-       <!--Import jQuery before materialize.js-->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.js"></script>
+  
+      
     </head>
 
   <body>
     
-    <div class="contanier">  
+    <div class="container">  
       <div class="row">
         <div class="col s4"></div> 
         <div class="col s4">
@@ -29,22 +29,19 @@
         <div class="col s4"></div>
       </div>  
 
-      <nav>
-        <div class="nav-wrapper">
-          <a href="#!" class="brand-logo"><i class="material-icons">cloud</i>Logo</a>
-          <ul class="right hide-on-med-and-down">
-            <li><a href="sass.html"><i class="material-icons">search</i></a></li>
-            <li><a href="badges.html"><i class="material-icons">view_module</i></a></li>
-            <li><a href="collapsible.html"><i class="material-icons">refresh</i></a></li>
-            <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
-          </ul>
-        </div>
-      </nav>
+      <div class="navbar-fixed">
+        <nav>
+          <div class="nav-wrapper">
+            <a href="#!" class="brand-logo">Logo</a>
+            <ul class="right hide-on-med-and-down">
+              <li><a href="sass.html">Sass</a></li>
+              <li><a href="badges.html">Components</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
 
-    
-    <!-- <div class="contanier"> -->
       <div class="row">
-        <div class="col s2"></div> 
         <div class="col s4">
           <div class="card">
               <div class="card-image waves-effect waves-block waves-light">
@@ -76,7 +73,22 @@
             </div>
           </div>
          </div>
-         <div class="col s2"></div>
+
+        <div class="col s4">
+            <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="https://0.s3.envato.com/files/1616804/Preview_image.jpg">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">Hotel<i class="material-icons right">more_vert</i></span>
+              <p><a href="#">This is a link</a></p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Hotel<i class="material-icons right">close</i></span>
+              <p>Here is some more information about this product that is only revealed once clicked on.</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="row">
@@ -87,11 +99,11 @@
                 <img class="activator" src="http://chainimage.com/images/car-wallpapers-free-download-maybach-history-1921-2013.jpg">
               </div>
               <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">Ground Transportation<i class="material-icons right">more_vert</i></span>
+                <span class="card-title activator grey-text text-darken-4">Transportation<i class="material-icons right">more_vert</i></span>
                 <p><a href="#">This is a link</a></p>
               </div>
               <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">Ground Transportaion<i class="material-icons right">close</i></span>
+                <span class="card-title grey-text text-darken-4">Transportaion<i class="material-icons right">close</i></span>
                 <p>Here is some more information about this product that is only revealed once clicked on.</p>
               </div>
           </div>
