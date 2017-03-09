@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Weather Display</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
+
+</head>
+<body>
+
+<form>
+	<input id="user-location" value="Where are you going?">
+	<button type="submit" for="user-location" id="set-location">Go</button>
+</form>
+
+<div id="weather"></div>	
+
+	<script>
+
+	$("#set-location").on("click", function(event) {
+
+		event.preventDefault();
+		var location = $("#user-location").val().trim();
+
+		checkWeather(location);
+	});
+
+	function checkWeather(location) {
+
+		var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + location;
+		// var queryURL = "http://api.openweathermap.org/data/2.5/weather?lat=" + loc.lat + "&lon=" + loc.lon;
+
+		$.ajax({
+			url: 
+		})
+	}
+
+	</script>
+</body>
+</html>
