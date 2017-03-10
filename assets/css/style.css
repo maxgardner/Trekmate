@@ -2,21 +2,28 @@
 
 body {
 	background-image: url("http://www.powerpointhintergrund.com/uploads/blue-ppt-backgrounds-21.jpg");
-	max-width: 1500px;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	/*max-width: 1500px;*/
 }	
 
 h1 {
 	text-align: center;
+	font; "Times New Roman";
 	/*background-color: lightblue;*/
 
 }
 
+ul {
+	background-color: #64b5f6 blue lighten-2;
+}
+
 nav {
-	/*background-color: orange;*/
+	background-color: pink;
 }
 
 .card {
-	max-height: 225px;
-	max-width: 225px;
-
+	max-height: 250px;
+	max-width: 250px;
+	image-rendering: 100px 100px;
 }
