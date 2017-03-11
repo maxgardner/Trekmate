@@ -9,21 +9,19 @@ body {
 
 h1 {
 	text-align: center;
-	font; "Times New Roman";
-	/*background-color: lightblue;*/
-
-}
-
-ul {
-	background-color: #64b5f6 blue lighten-2;
-}
-
-nav {
-	background-color: pink;
 }
 
 .card {
 	max-height: 250px;
 	max-width: 250px;
 	image-rendering: 100px 100px;
+}
+
+#btn {
+	background: black;
+}
+
+#coverpic {
+	max-width: 1000px;
+	max-height: 1000px;
 }
