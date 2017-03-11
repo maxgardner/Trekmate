@@ -1,5 +1,3 @@
-
-
 body {
 	background-image: url("http://www.powerpointhintergrund.com/uploads/blue-ppt-backgrounds-21.jpg");
 	background-repeat: no-repeat;
@@ -9,6 +7,22 @@ body {
 
 h1 {
 	text-align: center;
+	font-family: "Times New Roman", serif;
+	/*background-color: lightblue;*/
+
+}
+
+ul {
+	background-color: #64b5f6 blue lighten-2;
+}
+
+nav {
+	background-color: pink;
+}
+
+#logo {
+	margin-top: 20px;
+	width: 200px;
 }
 
 .card {
@@ -24,4 +38,17 @@ h1 {
 #coverpic {
 	max-width: 1000px;
 	max-height: 1000px;
+}
+
+#weather-icon {
+	float: left;
+	margin-right: 10px;
+}
+
+i.wi {
+	font-size: 1.5em;
+}
+
+.max-temp {
+	font-size: 1.5em;
 }
