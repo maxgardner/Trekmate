@@ -28,16 +28,16 @@
         <div class="col s4"></div>
         <div class="col s4">
         <div>
-          <input id="email" type="email" class="validate">
+          <input id="txtEmail" type="email" class="validate">
           <label for="email">Email</label>
-          <input id="password" type="password" class="validate">
+          <input id="txtPassword" type="password" class="validate">
           <label for="password">Password</label>
         <ul class="right hide-on-sm-and-down">
-          <li><a class="waves-effect waves-light btn" id="btn">Sign In</a></li>
+          <li><a id="btnLogin" class="waves-effect waves-light btn loginDisplay">Sign In</a></li>
           <br>
-          <li><a class="waves-effect waves-light btn">Sign Up<!-- i class="material-icons right">cloud</i> --></a></li>
+          <li><a id="btnSignUp" class="waves-effect waves-light btn loginDisplay">Sign Up<!-- i class="material-icons right">cloud</i> --></a></li>
           <br>
-          <li><a class="waves-effect waves-light btn">Sign Off</a></li>
+          <li><a id="btnLogout" class="waves-effect waves-light btn hide">Sign Off</a></li>
           </ul>
         </div>
       </div>  
@@ -153,5 +153,19 @@
          <div class="col s2"></div>
       </div>
     </div>
+    <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyAh2KbxBIDfaljTf-1zuxRGW2paP3TDqIU",
+      authDomain: "class-project-95553.firebaseapp.com",
+      databaseURL: "https://class-project-95553.firebaseio.com",
+      storageBucket: "class-project-95553.appspot.com",
+      messagingSenderId: "1077729059008"
+    };
+    firebase.initializeApp(config);
+  </script>
+    <script text="text/javascript" src="assets/js/application.js">
+    </script>
   </body>
   </html>
