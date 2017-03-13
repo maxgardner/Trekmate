@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD <head>
-    <link rel="stylesheet" href="assets/css/reset.css">
+<head>
+    
     <!-- Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="assets/css/style.css" />
-
     <!-- Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Compiled and minified CSS -->
@@ -18,168 +16,163 @@
 
     <!-- Weather icons library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/reset.css"> -->
+    <link type="text/css" rel="stylesheet" href="assets/css/style.css"/>
 
-    </head>
+</head>
 
-    <body>
+<body>
 
-        <div class="container">
-            <div id="login">
-                <div class="row">
-                    <div class="col s4">
-                        <img id="logo" class="reponsive-img" src="assets/images/logo.png" alt="TrekMate">
-                    </div>
-                    <div class="col s4"></div>
-                    <div class="col s4">
-                        <div>
-                            <input id="email" type="email" class="validate">
-                            <label for="email">Email</label>
-                            <input id="password" type="password" class="validate">
-                            <label for="password">Password</label>
-                            <ul class="right hide-on-sm-and-down">
-                                <li><a class="waves-effect waves-light btn" id="btn">Sign In</a></li>
-                                <br>
-                                <li><a class="waves-effect waves-light btn">Sign Up</a></li>
-                                <br>
-                                <!-- <li><a class="waves-effect waves-light btn">Sign Off</a></li> -->
-                            </ul>
-                        </div>
-                    </div>
+    <!-- COVER PAGE -->
+    <div class="container">
+        <div id="login">
+            <div class="row">
+                <div class="col s4">
+                    <img id="logo" class="reponsive-img" src="assets/images/logo.png" alt="TrekMate">
                 </div>
-
-                <!-- Cover page login -->
-
-                <div class="row">
-                    <div class="col s3"></div>
-                    <div class="col s6">
-                        <img class="responsive-img" src="http://www.br.de/radio/b5-aktuell/sendungen/notizen-aus-aller-welt/podcast-wegweiser-staedte-100~_v-img__16__9__m_-4423061158a17f4152aef84861ed0243214ae6e7.jpg?version=4be68" id="cover pic">
+                <div class="col s5"></div>
+                <div class="col s3">
+                    <div>
+                        <input id="email" type="email" class="validate">
+                        <label for="email">Email</label>
+                        <input id="password" type="password" class="validate">
+                        <label for="password">Password</label>
+                        <br>
+                        <ul class="right hide-on-sm-and-down">
+                            <li><a class="waves-effect waves-light btn" id="btn">Sign In</a></li>
+                            <br>
+                            <li><a class="waves-effect waves-light btn" id="btn">Sign Up</a></li>
+                            <!-- <li><a class="waves-effect waves-light btn" id="btn">Sign Off</a></li> -->
+                        </ul>
                     </div>
-                </div>
-
-
-                <div class="row">
-                    <div class="col s4">
-                        <img id="logo" class="reponsive-img" src="assets/images/logo.png" alt="TrekMate">
-                    </div>
-                    <div class="col s4"></div>
-                    <div class="col s4">
-                        <div>
-                            <ul class="right hide-on-sm-and-down">
-                                <li><a class="waves-effect waves-light btn">Sign Off</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- End of cover page login -->
-
-                <div>
-                    <input id="user-location" value="Where are you going?">
-                    <button class="btn" for="user-location" id="set-location">Go</button>
-                </div>
-
-                <div class="row">
-                    <div class="col s4">
-                        <div class="card small">
-                            <!-- add flight from database-->
-                            <input class="waves-effect waves-light btn" id="add-flight" type="submit" value="Add Flight">
-
-                            <div class="card-image waves-effect waves-block waves-light">
-                                <img class="activator" src="http://www.mattis.aero/images/ship.jpg">
-
-                                <!-- https://www.welovesolo.com/wp-content/uploads/vector/14/Airwais-4.jpg -->
-                            </div>
-                            <div class="card-content">
-                                <span class="card-title activator grey-text text-darken-4">Flight<i class="material-icons right">more_vert</i></span>
-                                <p><a href="https://www.aa.com/homePage.do">This is a link</a></p>
-                            </div>
-                            <div class="card-reveal">
-                                <!-- id for flight status -->
-                                <span class="card-title grey-text text-darken-4">Flight<i class="material-icons right">close</i></span>
-                                <p id="flightStatus"></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col s4">
-                        <div class="card small">
-                            <div class="card-image waves-effect waves-block waves-light">
-                                <img class="activator" src="http://flashydubai.com/images/jumeirah-beach.jpg">
-                            </div>
-                            <div class="card-content">
-                                <span class="card-title activator grey-text text-darken-4">Hotel<i class="material-icons right">more_vert</i></span>
-                                <p><a href="#">This is a link</a></p>
-                            </div>
-                            <div class="card-reveal">
-                                <span class="card-title grey-text text-darken-4">Hotel<i class="material-icons right">close</i></span>
-                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col s4">
-                        <div class="card small">
-                            <div class="card-image waves-effect waves-block waves-light">
-                                <img class="activator" src="http://chainimage.com/images/car-wallpapers-free-download-maybach-history-1921-2013.jpg">
-                            </div>
-                            <div class="card-content">
-                                <span class="card-title activator grey-text text-darken-4">Transportation<i class="material-icons right">more_vert</i></span>
-                                <p><a href="#">This is a link</a></p>
-                            </div>
-                            <div class="card-reveal">
-                                <span class="card-title grey-text text-darken-4">Transportation<i class="material-icons right">close</i></span>
-                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col s2"></div>
-                    <div class="col s4">
-                        <div class="card small">
-                            <div class="card-image waves-effect waves-block waves-light">
-                                <img class="activator" src="https://0.s3.envato.com/files/1616804/Preview_image.jpg">
-                            </div>
-                            <div class="card-content">
-                                <span class="card-title activator grey-text text-darken-4">Weather<i class="material-icons right">more_vert</i></span>
-                                <p><a href="#">This is a link</a></p>
-                            </div>
-                            <div class="card-reveal">
-                                <span class="card-title grey-text text-darken-4">Weather<i class="material-icons right">close</i></span>
-                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col s4">
-                        <div class="card small">
-                            <div class="card-image waves-effect waves-block waves-light">
-                                <img class="activator" src="http://images.all-free-download.com/images/graphicthumb/tourist_information_sign_192713.jpg">
-
-                            </div>
-                            <div class="card-content">
-                                <span class="card-title activator grey-text text-darken-4">Tours / Events<i class="material-icons right">more_vert</i></span>
-                                <p><a href="#">This is a link</a></p>
-                            </div>
-                            <div class="card-reveal">
-                                <span class="card-title grey-text text-darken-4">Tours / Events<i class="material-icons right">close</i></span>
-                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col s2"></div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col s2"></div>
+                <div class="col s8">
+                    <img class="responsive-img" src="http://www.br.de/radio/b5-aktuell/sendungen/notizen-aus-aller-welt/podcast-wegweiser-staedte-100~_v-img__16__9__m_-4423061158a17f4152aef84861ed0243214ae6e7.jpg?version=4be68" id="cover pic">
+                </div>
+                <div class="col s2"></div>
+            </div>
         </div>
-        <div class="col s2"></div>
-        </div>
+    <!-- END OF COVER PAGE -->
+        
+    <!-- DASH BOARD -->
+        <div class="row">
+            <div class="col s4">
+                <img id="logo" class="reponsive-img" src="assets/images/logo.png" alt="TrekMate">
+            </div>
+            <div class="col s4"></div>
+            <div class="col s4">
+                <ul class="right hide-on-sm-and-down">
+                    <li><a class="waves-effect waves-light btn" id="btn">Sign Off</a></li>
+                </ul>
+            </div>
         </div>
 
-        <script src="assets/js/application.js"></script>
-        <!-- flight api -->
-        <script src="assets/js/api.js" type="text/javascript"></script>
-        <script src="assets/js/flightstatsAPIokJsonP.js" type="text/javascript"></script>
-    </body>
+    <!-- ADDED AS A PLACE HOLDER  -->
+        <div>
+            <input id="user-location" value="Where are you going?">
+            <button class="btn" for="user-location" id="set-location">Go</button>
+        </div>
+
+        <div class="row">
+            <div class="col s4">
+                <div class="card small">
+    <!-- add flight from database-->
+                    <input class="waves-effect waves-light btn" id="add-flight" type="submit" value="Add Flight">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="http://www.mattis.aero/images/ship.jpg">
+                    </div>
+                            <!-- https://www.welovesolo.com/wp-content/uploads/vector/14/Airwais-4.jpg -->
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Flight<i class="material-icons right">more_vert</i></span>
+                        <p><a href="https://www.aa.com/homePage.do">This is a link</a></p>
+                    </div>
+                    <div class="card-reveal">
+    <!-- id for flight status -->
+                        <span class="card-title grey-text text-darken-4">Flight<i class="material-icons right">close</i></span>
+                        <p id="flightStatus"></p>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="col s4">
+                <div class="card small">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="http://flashydubai.com/images/jumeirah-beach.jpg">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Hotel<i class="material-icons right">more_vert</i></span>
+                        <p><a href="#">This is a link</a></p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Hotel<i class="material-icons right">close</i></span>
+                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s4">
+                <div class="card small">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="http://chainimage.com/images/car-wallpapers-free-download-maybach-history-1921-2013.jpg">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Transportation<i class="material-icons right">more_vert</i></span>
+                        <p><a href="#">This is a link</a></p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Transportation<i class="material-icons right">close</i></span>
+                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                    </div>
+                </div>
+            </div>
+        </div>    
+
+        <div class="row">
+            <div class="col s2"></div>
+            <div class="col s4">
+                <div class="card small">
+                    <div class="card-content">
+                        <span id="city-name" class="card-title activator grey-text text-darken-4"></span>
+                    <div id="weather">
+                    <br><br>
+                    <div id="weather-icon"></div>
+                        <span id="max-temp"></span>
+                        <br><br>
+                    </div>
+                    </div>
+                <div class="card-action">
+                    <p class="weather-forecast"><a href="#">5-Day Forecast</a></p>
+                </div>
+                </div>
+            </div>
+
+            <div class="col s4">
+                <div class="card small">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="http://images.all-free-download.com/images/graphicthumb/tourist_information_sign_192713.jpg">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Tours / Events<i class="material-icons right">more_vert</i></span>
+                        <p><a href="#">This is a link</a></p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Tours / Events<i class="material-icons right">close</i></span>
+                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s2"></div>
+        </div>
+    </div>
+    
+
+    <script src="assets/js/application.js"></script>
+    <!-- flight api -->
+    <script src="assets/js/api.js" type="text/javascript"></script>
+    <script src="assets/js/flightstatsAPIokJsonP.js" type="text/javascript"></script>
+</body>
 
 </html>
