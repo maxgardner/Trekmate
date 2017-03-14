@@ -1,5 +1,5 @@
 
-$(document).ready(function(){
+
 
 
 
@@ -48,7 +48,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 } else {
 	console.log("not logged in");
 }
-});
+
 
 // FOR THE WEATHER
 
@@ -133,4 +133,5 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 			console.log("Error: " + error);
 		})
 	}
+});
 
