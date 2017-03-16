@@ -101,6 +101,15 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
 		return iconToUse;
 	};
+	function googlePlaces(){
+		$.ajac({
+			url: querylUrl
+			method: "GET"
+		}).done(function(response){
+			console.log(response);
+
+		})
+	}
 
 	// Pull user's weather to query Open Weather API
 
@@ -133,5 +142,5 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 			console.log("Error: " + error);
 		})
 	}
-});
+	
 
