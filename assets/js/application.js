@@ -1,20 +1,26 @@
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyAh2KbxBIDfaljTf-1zuxRGW2paP3TDqIU",
+  authDomain: "class-project-95553.firebaseapp.com",
+  databaseURL: "https://class-project-95553.firebaseio.com",
+  storageBucket: "class-project-95553.appspot.com",
+  messagingSenderId: "1077729059008"
+};
+firebase.initializeApp(config);
 
-
-
-
-
+// Store database paths in global variables
 var database = firebase.database();
+var userData = firebase.database().ref("/users");
+var tripData = firebase.database().ref("/trips");
 
-console.log(database);
-
-//getting all the elements in the dom
+// getting all the elements in the dom
 const txtEmail = $("#txtEmail");
 const txtPassword = $("#txtPassword");
 const btnLogin = $("#btnLogin");
 const btnSignUp = $("#btnSignUp");
 const btnLogout = $("#btnLogout");
 
-//add login event
+// add login event
 $("#btnLogin").on("click", function(){
 	const email = txtEmail.val();
 	const pass = txtPassword.val();
@@ -23,8 +29,10 @@ $("#btnLogin").on("click", function(){
 	//sign in
 	const promise = auth.signInWithEmailAndPassword(email, pass);
 	promise.catch( e=> console.log(e.message));
-	$('.loginDisplay').addClass("hide");
 })
+
+// User sign up
+
 $("#btnSignUp").on("click", function(){
 	const email = txtEmail.val();
 	const pass = txtPassword.val();
@@ -34,21 +42,53 @@ $("#btnSignUp").on("click", function(){
 	const promise = auth.createUserWithEmailAndPassword(email, pass);
 	promise.catch( e=> console.log(e.message));
 })
+
+// User sign out
 $("#btnLogout").on("click", function(){
 	firebase.auth().signOut();
-	$("#btnLogout").addClass("hide");
-	$(".loginDisplay").removeClass("hide");
 	
 })
-	
+
+// When user's authentication status changes, show certain things on the site
 firebase.auth().onAuthStateChanged(firebaseUser => {
 	if(firebaseUser){
 		console.log(firebaseUser);
-		$('#btnLogout').removeClass("hide");
-} else {
-	console.log("not logged in");
+		$("#btnLogout").removeClass("hide");
+		$("#btnLogin").addClass("hide");
+		$("#btnSignUp").addClass("hide");
+		getCurrentUser(firebaseUser.uid);
+	} else {
+		$("#btnLogout").addClass("hide");
+		$("#btnLogin").removeClass("hide");
+		$("#btnSignUp").removeClass("hide");
+		console.log("not logged in");
 }
 
+// Get current user's info
+
+function getCurrentUser(user) {
+	var user = user;
+	var trips = database.ref("/users" + user).trips.val();
+	trips.forEach(function(snap) {
+		displayTrips(snap.key, snap.val());
+	});
+}
+
+// Display user's trips on login
+
+function displayTrips(tripId, cityName) {
+	var $list = $("<ul/>");
+	var $link = $("<li/>").attr({"class":"activate-dashboard", "data-trip": tripId}).html(cityName).appendTo($list);
+	$("user-trip-list").append($list);
+}
+
+// Populate existing data from database upon clicking trip
+
+$(document).on("click", ".activate-dashboard", function() {
+	var tripId = $(".activate-dashboard").data();
+	var currentTrip = tripData.equalTo(tripId).val();
+	console.log(currentTrip);
+});
 
 // FOR THE WEATHER
 

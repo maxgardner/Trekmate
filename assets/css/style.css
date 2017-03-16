@@ -1,7 +1,7 @@
 body {
 	background-image: url("http://www.powerpointhintergrund.com/uploads/blue-ppt-backgrounds-21.jpg");
 	background-repeat: no-repeat;
-	background-size: 100% 100%;
+	background-size: cover;
 }	
 
 h1 {
@@ -25,6 +25,13 @@ nav {
 	background-color: pink;
 }
 
+nav>ul {
+	list-style-type: none;
+}
+
+nav>ul>li {
+	display: inline-block;
+}
 
 .card {
 	max-height: 300px;
@@ -34,6 +41,12 @@ nav {
 
 .loginDisplay{
 	display:none;
+}
+
+#hero-banner {
+	background: url("../images/hero.jpeg");
+	background-size: 100%;
+	min-height: 400px;
 }
 
 #btn {
