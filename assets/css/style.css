@@ -6,19 +6,13 @@ body {
 
 h1 {
 	text-align: center;
-	font-family: "Times New Roman", serif;
+	font-family: "Times New Roman", Ariel, serif;
 }
 
 #logo {
 	max-width: 400px;
 	max-height: 700px;
 	padding-top: 20px;
-}
-
-.validate {
-	line-height: 10px;
-	font-size: 8px;
-	color: #5F676B;
 }
 
 nav {
@@ -33,37 +27,40 @@ nav>ul>li {
 	display: inline-block;
 }
 
+=======
+>>>>>>> master
 .card {
-	max-height: 300px;
-	max-width: 300px;
+	max-height: 600px;
+	max-width: 400px;
 	image-rendering: 100px 100px;
+	line-height: 15px;
+	margin; 0px;
 }
 
 .loginDisplay{
 	display:none;
 }
 
-#hero-banner {
-	background: url("../images/hero.jpeg");
-	background-size: 100%;
-	min-height: 400px;
-}
-
-#btn {
+.btn {
 	background: #5F676B;
 	overflow: hidden;
     margin-left:auto;
     margin-right:0px;
 }
 
-#coverpic {
-	max-width: 1000px;
-	max-height: 1000px;
+.btn:hover {
+	background: #0070BB;
 }
 
 #weather-icon {
 	float: left;
 	margin-right: 10px;
+}
+
+#wCard {
+	max-height: 150px;
+	max-width: 400px;
+	float:rigth;
 }
 
 i.wi {

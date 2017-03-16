@@ -23,12 +23,8 @@
 
 </head>
 
-
-
-  <body>
-    
-
-    <!-- COVER PAGE -->
+<body>
+<!-- COVER PAGE -->
     <div class="container">
         <div id="login">
             <div class="row">
@@ -47,96 +43,114 @@
                             <li><a class="waves-effect waves-light btn" id="btnLogin">Sign In</a></li>
                             <br>
                             <li><a class="waves-effect waves-light btn" id="btnSignUp">Sign Up</a></li>
-                            <li><a class="waves-effect waves-light btn" id="btnLogout">Sign Off</a></li>
+                            <li><a class="waves-effect waves-light btn hide" id="btnLogout">Sign Off</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- END OF COVER PAGE -->
-    
-    <div id="dashboard" class="container hide">
-    <!-- DASH BOARD -->
 
-    <!-- ADDED AS A PLACE HOLDER  -->
-        <div>
-            <input id="user-location" value="Where are you going?">
+    <!-- Destinaion page -->
+    <div id="user-trips" class="container hide">
+        <div class="row"></div>
+        <div class="row">
+            <div class="col s2"></div>
+            <div class="col s8">
+                <p>What is your destination?</p>
+                <input id="user-location" value=" ">
             <button class="btn" for="user-location" id="set-location">Go</button>
+            </div>
         </div>
-
+    </div>
+    <!-- End of Destination page -->
+     
+    <!-- DASH BOARD -->
+    <div id="dashboard" class="container hide">
         <div class="row">
             <div class="col s4">
+                <span id="city-name"></span>
+            </div>
+            <div class="col s4"></div>
+            <div class="col s4">
+                <div class="card" id="wCard">
+                    <div class="card-content">
+                        <div id="weather">
+                            <br><br>
+                            <div id="weather-icon"></div>
+                                <span id="max-temp"></span>
+                            <br><br>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <p class="weather-forecast"><a href="#">5-Day Forecast</a></p>
+                    </div>  
+                </div>
+            </div>
+        </div> 
+        
+        <div class="row">
+            <div class="col s1"></div>
+            <div class="col s4">
+                <!-- add flight from database -->
+                <input class="waves-effect waves-light btn" id="add-flight" type="submit" value="Add Flight">      
                 <div class="card small">
-    <!-- add flight from database-->
-                    <input class="waves-effect waves-light btn" id="add-flight" type="submit" value="Add Flight">
+                    <input id="user-location" value=" ">
                     <div class="card-image waves-effect waves-block waves-light">
                         <img class="activator" src="http://www.mattis.aero/images/ship.jpg">
-                    </div>
-                            <!-- https://www.welovesolo.com/wp-content/uploads/vector/14/Airwais-4.jpg -->
+                    </div>    
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Flight<i class="material-icons right">more_vert</i></span>
-                        <p><a href="https://www.aa.com/homePage.do">This is a link</a></p>
+                        <span class="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
+                        <p>Flight</p>
                     </div>
+                    <!-- id for flight status -->
                     <div class="card-reveal">
-    <!-- id for flight status -->
                         <span class="card-title grey-text text-darken-4">Flight<i class="material-icons right">close</i></span>
                         <p id="flightStatus"></p>
                     </div>
                 </div>
             </div>
-           
+            <div class="col s2"></div>
             <div class="col s4">
+                    <input class="waves-effect waves-light btn" id="add-hotel" type="submit" value="Add Hotel">
                 <div class="card small">
+                        <input id="user-location" value=" ">
                     <div class="card-image waves-effect waves-block waves-light">
                         <img class="activator" src="http://flashydubai.com/images/jumeirah-beach.jpg">
                     </div>
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Hotel<i class="material-icons right">more_vert</i></span>
-                        <p><a href="#">This is a link</a></p>
+                        <span class="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
+                        <p>Hotel</p>
                     </div>
                     <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4">Hotel<i class="material-icons right">close</i></span>
-                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                        <p id="userHotel"></p>
                     </div>
                 </div>
             </div>
+            <div class="col sm1"></div>
+        </div>    
 
+        <div class="row">
+            <div class="col s1"></div>
             <div class="col s4">
+                    <input class="waves-effect waves-light btn" id="add-rental" type="submit" value="Add Car Rental">
                 <div class="card small">
+                        <input id="user-location" value=" ">
                     <div class="card-image waves-effect waves-block waves-light">
                         <img class="activator" src="http://chainimage.com/images/car-wallpapers-free-download-maybach-history-1921-2013.jpg">
                     </div>
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Transportation<i class="material-icons right">more_vert</i></span>
-                        <p><a href="#">This is a link</a></p>
+                        <span class="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
+                        <p>Car Rental</p>
                     </div>
                     <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4">Transportation<i class="material-icons right">close</i></span>
-                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                        <p id="userCar"></p>
                     </div>
                 </div>
             </div>
-        </div>    
-
-        <div class="row">
             <div class="col s2"></div>
-            <div class="col s4">
-                <div class="card small">
-                    <div class="card-content">
-                        <span id="city-name" class="card-title activator grey-text text-darken-4"></span>
-                    <div id="weather">
-                        <div id="weather-icon"></div>
-                            <span id="max-temp"></span>
-                            <br><br>
-                        </div>
-                    </div>
-                <div class="card-action">
-                    <p class="weather-forecast"><a href="#">5-Day Forecast</a></p>
-                </div>
-                </div>
-            </div>
-
             <div class="col s4">
                 <div class="card small">
                     <div class="card-image waves-effect waves-block waves-light">
@@ -148,14 +162,18 @@
                     </div>
                     <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4">Tours / Events<i class="material-icons right">close</i></span>
-                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                        <div class="input-field col s12">
+                            <textarea id="textarea1" class="materialize-textarea"></textarea>
+                            <label for="textarea1">Textarea</label>
+                        </div>
+                        <!-- <p>Here is some more information about this product that is only revealed once clicked on.</p> -->
                     </div>
                 </div>
             </div>
-            <div class="col s2"></div>
+            <div class="col s1"></div>
         </div>
     </div>
-
+    <!-- End of DASH BOARD -->  
       
     <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
 
