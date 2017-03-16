@@ -1,12 +1,16 @@
+
+
+
+
 body {
 	background-image: url("http://www.powerpointhintergrund.com/uploads/blue-ppt-backgrounds-21.jpg");
 	background-repeat: no-repeat;
-	background-size: 100% 100%;
+	background-size: cover;
 }	
 
 h1 {
 	text-align: center;
-	font-family: "Times New Roman", serif;
+	font-family: "Times New Roman", Ariel, serif;
 }
 
 #logo {
@@ -15,42 +19,34 @@ h1 {
 	padding-top: 20px;
 }
 
-.validate {
-	line-height: 10px;
-	font-size: 8px;
-	color: #5F676B;
-}
-
-nav {
-	background-color: pink;
-}
-
-
 .card {
-	max-height: 300px;
-	max-width: 300px;
+	max-height: 600px;
+	max-width: 400px;
 	image-rendering: 100px 100px;
+	line-height: 15px;
+	margin; 0px;
 }
 
 .loginDisplay{
 	display:none;
 }
 
-#btn {
+#btnLogout, #btnLogin, .btn {
 	background: #5F676B;
 	overflow: hidden;
     margin-left:auto;
     margin-right:0px;
 }
 
-#coverpic {
-	max-width: 1000px;
-	max-height: 1000px;
-}
-
 #weather-icon {
 	float: left;
 	margin-right: 10px;
+}
+
+#wCard {
+	max-height: 150px;
+	max-width: 400px;
+	float:rigth;
 }
 
 i.wi {
