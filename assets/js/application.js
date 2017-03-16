@@ -141,6 +141,15 @@ $(document).on("click", ".activate-dashboard", function() {
 
 		return iconToUse;
 	};
+	function googlePlaces(){
+		$.ajac({
+			url: querylUrl
+			method: "GET"
+		}).done(function(response){
+			console.log(response);
+
+		})
+	}
 
 	// Pull user's weather to query Open Weather API
 
@@ -173,5 +182,5 @@ $(document).on("click", ".activate-dashboard", function() {
 			console.log("Error: " + error);
 		})
 	}
-});
+	
 
