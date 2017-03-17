@@ -24,7 +24,37 @@
 </head>
 
 <body>
-<!-- COVER PAGE -->
+
+<!-- Sign In/Sign Up Modal -->
+  <div id="signInModal" class="modal">
+    <div class="modal-content">
+      <h4 id="sign-in-title">Sign In</h4>
+      <input id="txtEmail" type="email" class="validate">
+      <label for="email">Email</label>
+      <input id="txtPassword" type="password" class="validate">
+      <label for="password">Password</label>
+    </div>
+    <div class="modal-footer">
+      <a id="btnLogin" href="#!" class="modal-action waves-effect waves-green btn-flat">Sign In</a>
+      <a id="btnSignUp" href="#!" class="modal-action waves-effect waves-green btn-flat hide">Sign Up</a>
+    </div>
+  </div>
+
+<!-- Add Trip Modal -->
+  <div id="addTripModal" class="modal">
+    <div class="modal-content">
+      <h4 id="sign-in-title">Add A Trip</h4>
+      <label for="trip-destination">What is your destination?</label>
+      <input id="trip-destination">
+      <label for="trip-timeframe">When are you going?</label>
+      <input id="trip-timeframe" placeholder="Ex: May 7 - May 11">
+    </div>
+    <div class="modal-footer">
+      <a id="set-location" href="#!" class="modal-action waves-effect waves-green btn">Go</a>
+    </div>
+  </div>
+
+<!-- Navigation menu -->
     <div class="container">
         <div id="login">
             <div class="row">
@@ -33,16 +63,11 @@
                 </div>
                 <div class="col s5"></div>
                 <div class="col s3">
-                    <div>
-                        <input id="txtEmail" type="email" class="validate">
-                        <label for="email">Email</label>
-                        <input id="txtPassword" type="password" class="validate">
-                        <label for="password">Password</label>
-                        <br>
+                    <div class="nav-links">
                         <ul class="right hide-on-sm-and-down">
-                            <li><a class="waves-effect waves-light btn" id="btnLogin">Sign In</a></li>
+                            <li><a class="waves-effect waves-light btn modal-trigger hide" href="#signInModal" id="sign-in-link">Sign In</a></li>
                             <br>
-                            <li><a class="waves-effect waves-light btn" id="btnSignUp">Sign Up</a></li>
+                            <li><a class="waves-effect waves-light btn hide" href="#signInModal" id="sign-up-link">Sign Up</a></li>
                             <li><a class="waves-effect waves-light btn hide" id="btnLogout">Sign Off</a></li>
                         </ul>
                     </div>
@@ -51,22 +76,26 @@
         </div>
     </div>
 
-    <!-- Destinaion page -->
-    <div id="user-trips" class="container hide">
-        <div class="row"></div>
-        <div class="row">
-            <div class="col s2"></div>
-            <div class="col s8">
-                <p>What is your destination?</p>
-                <input id="user-location" value=" ">
-            <button class="btn" for="user-location" id="set-location">Go</button>
+    <!-- Destination page -->
+    <div id="user-trips" class="container content hide">
+        <div class="row valign-wrapper">
+        <div class="col s4 offset-s4 valign">
+          <div class="card darken-1">
+            <div class="card-content">
+              <span id="trips-title" class="card-title">Pick A Trip</span>
+              <p id="trip-list"></p>
             </div>
+            <div class="card-action">
+              <a class="waves-effect waves-light btn valign" href="#addTripModal" id="add-trip-link">Add A Trip</a>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
     <!-- End of Destination page -->
      
     <!-- DASH BOARD -->
-    <div id="dashboard" class="container hide">
+    <div id="dashboard" class="container content hide">
         <div class="row">
             <div class="col s4">
                 <span id="city-name"></span>
@@ -76,7 +105,6 @@
                 <div class="card" id="wCard">
                     <div class="card-content">
                         <div id="weather">
-                            <br><br>
                             <div id="weather-icon"></div>
                                 <span id="max-temp"></span>
                             <br><br>
@@ -176,10 +204,9 @@
     <!-- End of DASH BOARD -->  
       
     <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
-
-    <script type="text/javascript" src="assets/js/application.js">
-    </script>
+    <script type="text/javascript" src="assets/js/application.js"></script>
     <script src="assets/js/api.js" type="text/javascript"></script>
+    <script src="assets/js/dashboard.js" type="text/javascript"></script>
     <script src="assets/js/flightstatsAPIokJsonP.js" type="text/javascript"></script>
     
 </body>

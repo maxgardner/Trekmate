@@ -2,17 +2,25 @@ body {
 	background-image: url("http://www.powerpointhintergrund.com/uploads/blue-ppt-backgrounds-21.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
-}	
+}
 
 h1 {
 	text-align: center;
-	font-family: "Times New Roman", Ariel, serif;
+	font-family: "Times New Roman", Arial, serif;
+}
+
+.content {
+	margin-top: 40px;
 }
 
 #logo {
 	max-width: 400px;
 	max-height: 700px;
 	padding-top: 20px;
+}
+
+.nav-links {
+	margin-top: 30px;
 }
 
 nav {
@@ -27,14 +35,12 @@ nav>ul>li {
 	display: inline-block;
 }
 
-=======
->>>>>>> master
 .card {
 	max-height: 600px;
 	max-width: 400px;
 	image-rendering: 100px 100px;
 	line-height: 15px;
-	margin; 0px;
+	margin: 0px;
 }
 
 .loginDisplay{
@@ -60,8 +66,10 @@ nav>ul>li {
 #wCard {
 	max-height: 150px;
 	max-width: 400px;
-	float:rigth;
+	float:right;
 }
+
+#city-name
 
 i.wi {
 	font-size: 1.5em;
@@ -69,5 +77,4 @@ i.wi {
 
 .max-temp {
 	font-size: 1.5em;
-
 }
