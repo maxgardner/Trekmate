@@ -65,6 +65,10 @@ nav>ul>li {
 	margin-right: 10px;
 }
 
+#weather {
+	/*background-color: skyblue;*/
+}
+
 #wCard {
 	max-height: 150px;
 	max-width: 400px;
