@@ -54,10 +54,19 @@ function showItinerary(tripId) {
 	});
 }
 
+// Open modals to add things to Dashboard
+
+$("#add-hotel").on("click", function() {
+	$("#hotel-name").attr("value", "");
+	$("#hotel-address").attr("value", "");
+	("#addHotelModal").modal();
+})
+
 // On click buttons to add information
 
-$(document).on("click", "#add-hotel", function() {
-
+$(document).on("click", "#add-hotel", function(event) {
+	var hotelName = $("#hotel-name").val().trim();
+	var hotelAddress = $("#hotel-address").val().trim();
 })
 
 
