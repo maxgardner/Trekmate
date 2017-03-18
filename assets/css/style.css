@@ -113,3 +113,9 @@ i.wi {
     position: absolute;
     top: 60px;
 }
+/*add flight submit button*/
+.modal-footer-flight {
+    position: absolute;
+    top: 230px;
+		left: 70px;
+}

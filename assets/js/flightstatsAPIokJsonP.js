@@ -47,9 +47,9 @@ var month = null;
 var day = null;
 var airlineName = null;
 var flightNumber = null;
-
 // airline name
 var airlineName = $("#autocomplete-input").val();
+var tripId = null;
 
 $("#flight-info").on("click", function(event) {
     event.preventDefault();
@@ -64,10 +64,10 @@ $("#flight-info").on("click", function(event) {
     airlineName = $("#autocomplete-input").val();
     flightNumber = $("#flightNumber").val();
 
-    var tripId = $("#dashboard").data("id");
+    tripId = $("#dashboard").data("id");
 
     var flightKey = database.ref("trips/" + tripId + "/flights").push().key;
-    database.ref("trips/" + tripId + "/flights" + flightKey).set({
+    database.ref("trips/" + tripId + "/flights/" + flightKey).set({
         year: year,
         month: month,
         day: day,
@@ -76,3 +76,23 @@ $("#flight-info").on("click", function(event) {
     });
 
 });
+
+//// get
+
+function showFlights(tripId) {
+  console.log("I'm working");
+  console.log(tripId);
+    database.ref("trips/" + tripId + "/flights").once("value").then(function(snapshot) {
+        snapshot.forEach(function(childSnap) {
+          console.log("flights " + childSnap.val().airlineName);
+            var flight = childSnap.val();
+            var flightnumber = flight.flightNumber;
+            console.log("flight Number "  + flightnumber);
+            // var address = childSnap.address;
+            // var nameHTML = $("<p/>").attr("class", "business-name").text(name);
+            // var numberHTML = $("<p/>").attr("class", "business-number").text(number);
+            // var addressHTML = $("<p/>").attr("class", "business-address").text(address);
+            // $("#userCar").append(nameHTML, numberHTML, addressHTML);
+        });
+    });
+}

@@ -1,12 +1,13 @@
 // Initialize Firebase
-var config = {
-	apiKey: "AIzaSyAzrf8-HFMI0rYABhns7pYbWDA5No-w9mM",
-	authDomain: "test-project-3313e.firebaseapp.com",
-	databaseURL: "https://test-project-3313e.firebaseio.com",
-	storageBucket: "test-project-3313e.appspot.com",
-	messagingSenderId: "861837605444"
-};
-firebase.initializeApp(config);
+// firebase Roman
+  var config = {
+    apiKey: "AIzaSyA-3xG87C837XSmWA_Tag3TXufDig9ZrTE",
+    authDomain: "trekmate-16f2a.firebaseapp.com",
+    databaseURL: "https://trekmate-16f2a.firebaseio.com",
+    storageBucket: "trekmate-16f2a.appspot.com",
+    messagingSenderId: "82541813799"
+  };
+  firebase.initializeApp(config);
 
 // Store database paths in global variables
 const database = firebase.database();
