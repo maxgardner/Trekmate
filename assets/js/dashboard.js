@@ -122,6 +122,7 @@ $(document).on("click", "#addActivity", function(event) {
 $(document).on("click", ".activities", function(event) {
 	event.preventDefault();
 	var activityId = $(this).data("id");
+	$(this).addClass("hide");
 	var tripId = $("#dashboard").data("id");
 	database.ref("trips/" + tripId + "/itinerary/" + activityId).remove();
 	showItinerary();
