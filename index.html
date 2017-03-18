@@ -56,13 +56,13 @@
   </div>
 
 <!-- Add Hotel Modal -->
-  <div id="addTripModal" class="modal">
+  <div id="addHotelModal" class="modal">
     <div class="modal-content">
-      <h4 id="sign-in-title">Add A Trip</h4>
-      <input placeholder="City (Ex: Austin)" id="trip-city" type="text" class="validate">
-      <input placeholder="State (Ex: TX)" id="trip-state" type="text" class="validate">
-      <input placeholder="Day Leaving (Ex: March 11)" id="trip-leaving" type="text" class="validate">
-      <input placeholder="Day Returning (Ex: March 15)" id="trip-returning" type="text" class="validate">
+      <h4 id="sign-in-title">Add A Hotel</h4>
+      <input placeholder="Hotel Name" id="hotelName" type="text" class="validate">
+      <label for="hotel-name"></label>
+      <input id="hotel-address" placeholder="Address (Ex. 1900 University Ave Austin TX, 78705)" id="hotelAddress" type="text" class="validate">
+      <label for="hotel-address"></label>
     </div>
     <div class="modal-footer">
       <a id="set-location" href="#!" class="modal-action waves-effect waves-green btn">Go</a>
@@ -152,7 +152,7 @@
             </div>
         </div> 
         
-        <div class="row">
+        <div id="trip-details" class="row">
             <div class="col s1"></div>
             <div class="col s4">
                 <!-- add flight from database -->
