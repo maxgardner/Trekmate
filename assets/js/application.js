@@ -45,6 +45,8 @@ auth.onAuthStateChanged(firebaseUser => {
 // Open sign-in modal upon user clicking "Sign In" button
 $("#sign-in-link").on("click", function() {
 	$('#signInModal').modal();
+	$("#txtEmail").attr("value", "");
+	$("#txtPassword").attr("value", "");
 });
 
 // Change sign-in modal if user clicks "Sign Up" button
@@ -53,6 +55,8 @@ $("#sign-up-link").on("click", function() {
 	$('#sign-in-title').text("Sign Up");
 	$('#btnLogin').addClass('hide');
 	$('#btnSignUp').removeClass('hide');
+	$("#txtEmail").attr("value", "");
+	$("#txtPassword").attr("value", "");
 });
 
 // add login event
@@ -78,6 +82,7 @@ $("#btnSignUp").on("click", function(){
 // User sign out
 $("#btnLogout").on("click", function(){
 	auth.signOut();
+	$("#trip-list").empty();
 });
 
 // Add user to user object
@@ -144,9 +149,6 @@ $("#set-location").on("click", function() {
 // Populate existing data from database upon clicking trip
 
 $(document).on("click", ".activate-dashboard", function() {
-	var tripId = $(".activate-dashboard").data("id");
+	var tripId = $(this).data("id");
 	showDashboard(tripId);
 });
-
-// HTML: ADD MODALS FOR EACH SECTION
-// HTML: MOVE BUTTONS TO ADD THINGS FOR EACH SECTION ON DASHBOARD

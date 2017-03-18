@@ -60,26 +60,11 @@
     <div class="modal-content">
       <h4 id="sign-in-title">Add A Hotel</h4>
       <input placeholder="Hotel Name" id="hotelName" type="text" class="validate">
-      <label for="hotel-name"></label>
-      <input id="hotel-address" placeholder="Address (Ex. 1900 University Ave Austin TX, 78705)" id="hotelAddress" type="text" class="validate">
-      <label for="hotel-address"></label>
+      <input placeholder="Phone Number" id="hotelNumber" type="text" class="validate">
+      <input placeholder="Address (Ex. 1900 University Ave Austin TX, 78705)" id="hotelAddress" type="text" class="validate">
     </div>
     <div class="modal-footer">
-      <a id="set-location" href="#!" class="modal-action waves-effect waves-green btn">Go</a>
-    </div>
-  </div>
-
-<!-- Add Transport Modal -->
-  <div id="addTripModal" class="modal">
-    <div class="modal-content">
-      <h4 id="sign-in-title">Add A Trip</h4>
-      <input placeholder="City (Ex: Austin)" id="trip-city" type="text" class="validate">
-      <input placeholder="State (Ex: TX)" id="trip-state" type="text" class="validate">
-      <input placeholder="Day Leaving (Ex: March 11)" id="trip-leaving" type="text" class="validate">
-      <input placeholder="Day Returning (Ex: March 15)" id="trip-returning" type="text" class="validate">
-    </div>
-    <div class="modal-footer">
-      <a id="set-location" href="#!" class="modal-action waves-effect waves-green btn">Go</a>
+      <a id="addHotel" href="#!" class="modal-action waves-effect waves-green btn">Go</a>
     </div>
   </div>
 
@@ -163,41 +148,46 @@
             <div class="col s4">
                 <!-- add flight from database -->
 
-                <div class="card small">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="http://www.mattis.aero/images/ship.jpg">
-                    </div>
-                    <div class="card-content">
-                      <!-- Add Flight Modal Trigger -->
-                      <a class="waves-effect waves-light btn" href="#modal1">Add Flight</a>
-                      <!-- Modal Structure -->
-                      <div id="modal1" class="modal">
-                          <div class="modal-content">
-                              <!-- autocomplete example -->
-                              <div class="row">
-                                  <div class="col s12">
-                                      <div class="row">
-                                          <div class="input-field col s12">
-                                              <i class="material-icons prefix">textsms</i>
-                                              <input type="text" id="autocomplete-input" class="autocomplete">
-                                              <label for="autocomplete-input">Airline</label>
 
-                                              <input id="flightDate" type="date" class="datepicker" value="Flight Date">
+<!-- Flight card -->
 
-                                              <input id="flightNumber" type="text" value="Flight Number">
+        <div class="card small">
+            <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="http://www.mattis.aero/images/ship.jpg">
+            </div>
+            <div class="card-content">
+              <!-- Add Flight Modal Trigger -->
+              <a class="waves-effect waves-light btn" href="#modal1">Add Flight</a>
+      <!-- Modal Structure -->
+      <div id="modal1" class="modal">
+          <div class="modal-content">
+              <!-- autocomplete example -->
+              <div class="row">
+                  <div class="col s12">
+                      <div class="row">
+                          <div class="input-field col s12">
+                              <i class="material-icons prefix">textsms</i>
+                              <input type="text" id="autocomplete-input" class="autocomplete">
+                              <label for="autocomplete-input">Airline</label>
 
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="modal-footer">
-                              <!-- Button triggers new topic to be added -->
-                              <input id="flight-info" class="waves-effect waves-light btn" type="submit" value="Submit">
+                              <input id="flightDate" type="date" class="datepicker" value="Flight Date">
+
+                              <input id="flightNumber" type="text" value="Flight Number">
+
                           </div>
                       </div>
+                  </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+              <!-- Button triggers new topic to be added -->
+              <input id="flight-info" class="waves-effect waves-light btn" type="submit" value="Submit">
+          </div>
+      </div>
 
-<span class="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
+      <!-- End flight modal -->
+
+        <span class="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
 
                         <!-- <p>Flight</p> -->
                     </div>
@@ -213,6 +203,9 @@
                 </div>
             </div>
             <!-- <div class="col s2"></div> -->
+
+<!-- Hotel card -->
+
             <div class="col s4">
                 <div class="card small">
                     <div class="card-image waves-effect waves-block waves-light">
@@ -220,12 +213,12 @@
                     </div>
                     <div class="card-content">
                         <span class="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
-                        <input class="waves-effect waves-light btn" id="add-hotel" type="submit" value="Add Hotel">
+                        <a class="waves-effect waves-light btn" id="#add-hotel" href="#addHotelModal">Add Hotel</a>
                         <!-- <p>Hotel</p> -->
                     </div>
                     <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4">Hotel<i class="material-icons right">close</i></span>
-                        <p id="userHotel"></p>
+                        <span id="userHotel"></span>
                         <input placeholder="Placeholder" id="reservHotel" type="text" class="validate">
                         <label for="reservHotel">Reservation Number</label>
                     </div>
@@ -233,6 +226,8 @@
             </div>
             <div class="col sm2"></div>
         </div>
+
+<!-- Transportation card -->
 
         <div class="row">
             <div class="col s1"></div>
@@ -248,13 +243,16 @@
                     </div>
                     <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4">Transportation<i class="material-icons right">close</i></span>
-                        <p id="userCar"></p>
+                        <span id="userCar"></span>
                         <input placeholder="Placeholder" id="reservCar" type="text" class="validate">
                         <label for="reservCar">Reservation Number</label>
                     </div>
                 </div>
             </div>
             <div class="col s2"></div>
+
+<!-- Itinerary card -->
+
             <div class="col s4">
                 <div class="card small">
                     <div class="card-image waves-effect waves-block waves-light">

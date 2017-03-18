@@ -22,7 +22,7 @@ function showDashboard(tripId) {
 
 	showFlights(tripId);
 	showHotels(tripId);
-	showTransport(tripId);
+	showRental(tripId);
 	showItinerary(tripId);
 }
 
@@ -35,36 +35,98 @@ function showFlights(tripId) {
 
 function showHotels(tripId) {
 	database.ref("trips/" + tripId + "/hotels").once("value").then(function(snapshot) {
-		var hotelInfo = snapshot.val();
-		console.log(hotelInfo);
+		snapshot.forEach(function(childSnap) {
+			var hotel = childSnap.val();
+			var nameHTML = $("<p/>").attr("class", "business-name").text(hotel.name);
+			var numberHTML = $("<p/>").attr("class", "business-number").text(hotel.number);
+			var addressHTML = $("<p/>").attr("class", "business-address").text(hotel.address);
+			$("#userHotel").append(nameHTML, numberHTML, addressHTML);
+		});
 	});
 }
 
-function showTransport(tripId) {
-	database.ref("trips/" + tripId + "/transport").once("value").then(function(snapshot) {
-		var transportInfo = snapshot.val();
-		console.log(transportInfo);
+function showRental(tripId) {
+	database.ref("trips/" + tripId + "/rental").once("value").then(function(snapshot) {
+		snapshot.forEach(function(childSnap) {
+			var rental = childSnap.val();
+			var nameHTML = $("<p/>").attr("class", "business-name").text(rental.name);
+			var numberHTML = $("<p/>").attr("class", "business-number").text(rental.number);
+			var addressHTML = $("<p/>").attr("class", "business-address").text(rental.address);
+			$("#userCar").append(nameHTML, numberHTML, addressHTML);
+		});
 	});
 }
 
 function showItinerary(tripId) {
 	database.ref("trips/" + tripId + "/itinerary").once("value").then(function(snapshot) {
-		var itinerary = snapshot.val();
-		console.log(itinerary);
+		snapshot.forEach(function(childSnap) {
+			var activityId = childSnap.key;
+			var text = childSnap.val();
+			var activity = $("<li/>").attr({"class":"activities", "data-id":activityId}).text(text);
+			$("#event").append(activity);
+		});
 	});
 }
 
-// Open modals to add things to Dashboard
+// Add a hotel to dashboard
 
-$("#add-hotel").on("click", function() {
+// Pull up modal
+$(document).on("click", "#add-hotel", function() {
 	$("#hotel-name").attr("value", "");
 	$("#hotel-address").attr("value", "");
-	("#addHotelModal").modal();
+	$("#addHotelModal").modal();
 })
 
-// On click buttons to add information
+// Add hotel info to database
+$(document).on("click", "#addHotel", function() {
+	var hotelName = $("#hotelName").val().trim();
+	var hotelNumber = $("#hotelNumber").val().trim();
+	var hotelAddress = $("#hotelAddress").val().trim();
+	var tripId = $("#dashboard").data("id");
+	var hotelId = database.ref("trips/" + tripId + "/hotels").push().key;
+	database.ref("trips/" + tripId + "/hotels/" + hotelId).set({
+		name: hotelName,
+		phone: hotelNumber,
+		address: hotelAddress
+	});
+	$("#addHotelModal").modal("close");
+	showHotels();
+});
 
-$(document).on("click", "#add-hotel", function(event) {
-	var hotelName = $("#hotel-name").val().trim();
-	var hotelAddress = $("#hotel-address").val().trim();
+// Add a rental to dashboard
+
+// Add rental info to database
+$(document).on("click", "#add-rental", function() {
+	var name = $("#carRentalName").val().trim();
+	var confirmation = $("#carRentalConfirmation").val().trim();
+	var number = $("#carRentalNumber").val().trim();
+	var tripId = $("#dashboard").data("id");
+	var rentalId = database.ref("trips/" + tripId + "/rental").push().key;
+	hotelInfo.database.ref("trips/" + tripId + "/rental/" + rentalId).set({
+		name: name,
+		phone: number,
+		conf: confirmation
+	});
+	//CLOSE MODAL
+	showRental();
+});
+
+// Add an activity to dashboard
+
+// Add activity to database
+$(document).on("click", "#add-activity", function() {
+	var activity = $("#addActivity").val().trim();
+	var activityId = database.ref("trips/" + tripId + "/itinerary").push(
+		activity
+	);
+	//CLOSE MODAL
+	showItinerary();
+});
+
+// When a user clicks on an activity, delete it
+$(document).on("click", ".activites", function() {
+	var activityId = $(this).data("id");
+	var tripId = $("#dashboard").data("id");
+
+	database.ref("trips/" + tripId + "/itinerary/" + activityId).remove();
 })

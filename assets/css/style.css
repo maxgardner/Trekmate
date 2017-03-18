@@ -75,6 +75,13 @@ nav>ul>li {
 
 .activate-dashboard {
 	display: block;
+	padding: 20px;
+	text-align: center;
+	border: 2px dashed #EEE;
+}
+
+.activate-dashboard:hover {
+	background-color: #EEE;
 }
 
 #city-name {
@@ -103,8 +110,3 @@ i.wi {
     top: 60px;
 }
 /*add flight submit button*/
-.modal-footer {
-    position: absolute;
-    top: 230px;
-    left: -100px;
-}
