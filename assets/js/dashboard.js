@@ -12,9 +12,6 @@ function showDashboard(tripId) {
 		var state = snapshot.val().state;
 		var leaving = snapshot.val().leaving;
 		var returning = snapshot.val().returning;
-
-		console.log(leaving);
-
 		var location = city + ", " + state;
 		$("#city-name").text(location);
 		showWeather(city + "," + state);
@@ -35,7 +32,7 @@ function showHotels(tripId) {
 		snapshot.forEach(function(childSnap) {
 			var hotel = childSnap.val();
 			var nameHTML = $("<p/>").attr("class", "business-name").text(hotel.name);
-			var numberHTML = $("<p/>").attr("class", "business-number").text(hotel.number);
+			var numberHTML = $("<p/>").attr("class", "business-number").text(hotel.phone);
 			var addressHTML = $("<p/>").attr("class", "business-address").text(hotel.address);
 			$("#userHotel").append(nameHTML, numberHTML, addressHTML);
 		});
@@ -46,7 +43,6 @@ function showRental(tripId) {
 	database.ref("trips/" + tripId + "/rental").once("value").then(function(snapshot) {
 		snapshot.forEach(function(childSnap) {
 			var rental = childSnap.val();
-			console.log(childSnap.val());
 			var nameHTML = $("<p/>").attr("class", "business-name").text(rental.name);
 			var numberHTML = $("<p/>").attr("class", "business-number").text(rental.phone);
 			var addressHTML = $("<p/>").attr("class", "business-address").text(rental.conf);
@@ -60,7 +56,6 @@ function showItinerary(tripId) {
 		snapshot.forEach(function(childSnap) {
 			var activityId = childSnap.key;
 			var text = childSnap.val();
-			console.log(childSnap.key + " " + childSnap.val());
 			var activity = $("<li/>").attr({"class":"activities", "data-id":activityId}).html(text);
 			$("#event").append(activity);
 		});
@@ -107,7 +102,6 @@ $(document).on("click", "#addRental", function() {
 $(document).on("click", "#addActivity", function() {
 	var activity = $("#user-activity").val().trim();
 	var tripId = $("#dashboard").data("id");
-	console.log(activity);
 	var activityId = database.ref("trips/" + tripId + "/itinerary").push(
 		activity
 	);
@@ -119,6 +113,6 @@ $(document).on("click", "#addActivity", function() {
 $(document).on("click", ".activities", function() {
 	var activityId = $(this).data("id");
 	var tripId = $("#dashboard").data("id");
-
 	database.ref("trips/" + tripId + "/itinerary/" + activityId).remove();
+	showItinerary();
 });

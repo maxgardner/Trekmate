@@ -24,7 +24,6 @@ auth.onAuthStateChanged(firebaseUser => {
 		$("#sign-in-link").addClass("hide");
 		$("#sign-up-link").addClass("hide");
 		database.ref("users/" + firebaseUser.uid).once("value").then(function(snapshot) {
-			console.log(snapshot.val());
 			if (snapshot.val() === null) {
 				addUser();
 			}
@@ -39,7 +38,7 @@ auth.onAuthStateChanged(firebaseUser => {
 		$("#sign-in-title").text("Sign In");
 		$("#btnLogin").removeClass("hide");
 		$("#btnSignUp").addClass("hide");
-		console.log("not logged in");
+		console.log("Not logged in");
 	}
 });
 
@@ -103,7 +102,6 @@ function addUser() {
 
 function displayTrips() {
 	var userId = auth.currentUser.uid;
-	console.log(userId);
 	database.ref("users/" + userId + "/trips").once("value").then(function(snapshot) {
 		snapshot.forEach(function(childSnapshot) {
 			var tripId = childSnapshot.key;

@@ -23,7 +23,6 @@ function addAPIscript(APIname, protocol, version, format, parameters, options, c
         appId + appKey +
         options +
         "&callback=" + callbackName;
-    console.log(queryURL);
 
     var jsonpSrcSript = $("<script>");
     jsonpSrcSript.attr("src", queryURL);

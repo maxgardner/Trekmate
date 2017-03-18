@@ -1,5 +1,4 @@
 function flightInfo(info) {
-    console.log(info);
     $("#flightStatus").empty();
     $("#flightStatus").html("<br>" + info.appendix.airlines[0].name + "<br>");
     $("#flightStatus").append(info.flightStatuses[0].carrierFsCode + "<br>");
@@ -52,34 +51,23 @@ $("#flight-info").on("click", function(event) {
         flightNumber: flightNumber
     });
 
+    showFlights();
 });
 
 //// get
 
 function showFlights(tripId) {
-  console.log("I'm working");
-  console.log(tripId);
     database.ref("trips/" + tripId + "/flights").once("value").then(function(snapshot) {
         snapshot.forEach(function(childSnap) {
-          console.log("flights " + childSnap.val().airlineName);
             airlineName = childSnap.val().airlineName;
             flightNumber = childSnap.val().flightNumber;
             year = childSnap.val().year;
             month = childSnap.val().month;
             day = childSnap.val().day;
-            console.log("flight Number "  + flightNumber);
             var flightDate = year + "/" + month + "/" + day; // from database
-
-            console.log(airlineName);
-            console.log(flightNumber);
-            console.log(flightDate);
-
             parameters = "flight/status/" + airlineName + "/" + flightNumber + "/arr/" + flightDate;
-            console.log(parameters);
-
+            $("#modal1").modal("close");
             addAPIscript("flightstatus", "rest", "v2", "jsonp", parameters, "", "flightInfo");
-
-
         });
     });
 }

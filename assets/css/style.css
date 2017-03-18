@@ -110,6 +110,21 @@ i.wi {
 	margin-bottom: 20px;
 }
 
+.activities {
+	padding: 10px;
+}
+
+.activities::before {
+	content: "\2022 ";
+}
+
+.activities:hover {
+	background: #EEE;
+}
+
+.activities:hover::before {
+	content: "x ";
+}
 
 /*flight autocomplete-content*/
 
