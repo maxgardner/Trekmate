@@ -82,7 +82,6 @@ function showWeather(location) {
         method: "GET"
     }).done(function(result) {
         var weatherClass = parseIcon(result.weather[0].icon);
-
         // Create HTML elements for the results
         var $weatherIcon = $("<div/>").attr("id", "weather-icon");
         var icon = $("<i/>").attr("class", weatherClass);
@@ -94,6 +93,7 @@ function showWeather(location) {
         var $humidity = $("<p/>").html(result.main.humidity + "&#37; humidity");
         var $break = $("<p/>").html("<br>");
         $("#weather").append($weatherIcon, $maxTemp, $break, $minTemp, $humidity);
+        $("#forecast-link").attr("href", "https://www.google.com/search?q=" + location + "+weather")
     }).fail(function(error) {
         console.log("Error: " + error);
     });

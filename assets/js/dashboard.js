@@ -14,7 +14,7 @@ function showDashboard(tripId) {
 		var returning = snapshot.val().returning;
 		var location = city + ", " + state;
 		$("#city-name").text(location);
-		showWeather( + "," + state);
+		showWeather(city + "," + state);
 
 		var tripTimeFrame = leaving + " - " + returning;
 		$("#trip-timeframe").html(tripTimeFrame);
