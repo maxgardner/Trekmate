@@ -1,4 +1,5 @@
 // Functions to display Dashboard correctly for that user
+	var location; 
 
 function showDashboard(tripId) {
 	$("#user-trips").addClass("hide");
@@ -53,6 +54,9 @@ function showItinerary(tripId) {
 		console.log(itinerary);
 	});
 }
+function googleTourist(tripId){
+	$("#googleTour").attr("href", "https://google.com/search?q=" + "austin" + "+tourist");
+};
 
 // On click buttons to add information
 
