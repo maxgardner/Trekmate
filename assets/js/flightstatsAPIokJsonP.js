@@ -1,40 +1,17 @@
 function flightInfo(info) {
     console.log(info);
     $("#flightStatus").empty();
-    $("#flightStatus").html(info.appendix.airlines[0].name + "<br>");
+    $("#flightStatus").html("<br>" + info.appendix.airlines[0].name + "<br>");
     $("#flightStatus").append(info.flightStatuses[0].carrierFsCode + "<br>");
     $("#flightStatus").append(info.flightStatuses[0].flightNumber + "<br>");
     $("#flightStatus").append("Status: " + info.flightStatuses[0].status);
 }
 
-$("#add-flight").on("click", function(event) {
-    event.preventDefault();
-    //
-    // var airlineCode = $("#flightStatus-code").val();
-    // var flightNumber = $("#flightStatus-number").val();
-    // var flightDate = $("#flightStatus-date").val();
-
-    var airlineCode ="BA"; // from database
-    var flightNumber = "4146"; // from database
-    var flightDate = "2017/3/11"; // from database
-
-    console.log(airlineCode);
-    console.log(flightNumber);
-    console.log(flightDate);
-
-    parameters = "flight/status/" + airlineCode + "/" + flightNumber + "/arr/" + flightDate;
-    console.log(parameters);
-
-    addAPIscript("flightstatus", "rest", "v2", "jsonp", parameters, "", "flightInfo");
-
-});
-
-
 // add flight modal
 $('document').ready(function() {
 // // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
   $('.modal').modal();
-  
+
 
 });
 
@@ -85,14 +62,24 @@ function showFlights(tripId) {
     database.ref("trips/" + tripId + "/flights").once("value").then(function(snapshot) {
         snapshot.forEach(function(childSnap) {
           console.log("flights " + childSnap.val().airlineName);
-            var flight = childSnap.val();
-            var flightnumber = flight.flightNumber;
-            console.log("flight Number "  + flightnumber);
-            // var address = childSnap.address;
-            // var nameHTML = $("<p/>").attr("class", "business-name").text(name);
-            // var numberHTML = $("<p/>").attr("class", "business-number").text(number);
-            // var addressHTML = $("<p/>").attr("class", "business-address").text(address);
-            // $("#userCar").append(nameHTML, numberHTML, addressHTML);
+            airlineName = childSnap.val().airlineName;
+            flightNumber = childSnap.val().flightNumber;
+            year = childSnap.val().year;
+            month = childSnap.val().month;
+            day = childSnap.val().day;
+            console.log("flight Number "  + flightNumber);
+            var flightDate = year + "/" + month + "/" + day; // from database
+
+            console.log(airlineName);
+            console.log(flightNumber);
+            console.log(flightDate);
+
+            parameters = "flight/status/" + airlineName + "/" + flightNumber + "/arr/" + flightDate;
+            console.log(parameters);
+
+            addAPIscript("flightstatus", "rest", "v2", "jsonp", parameters, "", "flightInfo");
+
+
         });
     });
 }
