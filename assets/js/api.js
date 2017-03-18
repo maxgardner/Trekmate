@@ -95,6 +95,6 @@ function showWeather(location) {
         $("#weather").append($weatherIcon, $maxTemp, $break, $minTemp, $humidity);
         $("#forecast-link").attr("href", "https://www.google.com/search?q=" + location + "+weather")
     }).fail(function(error) {
-        console.log("Error: " + error);
+        console.log("Error: " + JSON.stringify(error));
     });
 }
