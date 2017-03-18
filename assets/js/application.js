@@ -38,6 +38,7 @@ auth.onAuthStateChanged(firebaseUser => {
 		$("#sign-in-title").text("Sign In");
 		$("#btnLogin").removeClass("hide");
 		$("#btnSignUp").addClass("hide");
+		$("#back2Trips").addClass("hide");
 		console.log("Not logged in");
 	}
 });
