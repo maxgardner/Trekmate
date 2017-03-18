@@ -25,25 +25,29 @@ const auth = firebase.auth();
 
 // When user's authentication status changes, show certain things on the site
 auth.onAuthStateChanged(firebaseUser => {
-    if(firebaseUser){
-        addUser(firebaseUser.uid, firebaseUser.email)
-        $('#user-trips').removeClass('hide');
-        $('#signInModal').modal('close');
-        $("#btnLogout").removeClass("hide");
-        $("#sign-in-link").addClass("hide");
-        $("#sign-up-link").addClass("hide");
-        displayTrips();
-    } else {
-        $("#dashboard").addClass("hide");
-        $("#user-trips").addClass("hide");
-        $("#btnLogout").addClass("hide");
-        $("#sign-in-link").removeClass("hide");
-        $("#sign-up-link").removeClass("hide");
-        $("#sign-in-title").text("Sign In");
-        $("#btnLogin").removeClass("hide");
-        $("#btnSignUp").addClass("hide");
-        console.log("not logged in");
-    }
+	if(firebaseUser){
+		$('#user-trips').removeClass('hide');
+		$('#signInModal').modal('close');
+		$("#btnLogout").removeClass("hide");
+		$("#sign-in-link").addClass("hide");
+		$("#sign-up-link").addClass("hide");
+		database.ref("users/" + firebaseUser.uid).once("value").then(function(snapshot) {
+			if (snapshot.key === undefined) {
+				addUser();
+			}
+		});
+		displayTrips();
+	} else {
+		$("#dashboard").addClass("hide");
+		$("#user-trips").addClass("hide");
+		$("#btnLogout").addClass("hide");
+		$("#sign-in-link").removeClass("hide");
+		$("#sign-up-link").removeClass("hide");
+		$("#sign-in-title").text("Sign In");
+		$("#btnLogin").removeClass("hide");
+		$("#btnSignUp").addClass("hide");
+		console.log("not logged in");
+	}
 });
 
 // Open sign-in modal upon user clicking "Sign In" button
@@ -86,9 +90,11 @@ $("#btnLogout").on("click", function(){
 
 // Add user to user object
 
-function addUser(userId, email) {
+function addUser() {
+	var userId = auth.currentUser.uid;
+	var email = auth.currentUser.email;
 	database.ref("users/" + userId).set({
-		"email": email
+		"email": email,
 	});
 }
 
@@ -100,7 +106,7 @@ function displayTrips() {
 	database.ref("users/" + userId + "/trips").once("value").then(function(snapshot) {
 		snapshot.forEach(function(childSnapshot) {
 			var tripId = childSnapshot.key;
-			var location = childSnapshot.val();
+			var location = childSnapshot.val().location;
 			
 			// Build HTML elements
 
@@ -119,21 +125,26 @@ $("#add-trip-link").on("click", function(){
 // Add a trip when someone fills out the form
 
 $("#set-location").on("click", function() {
-	var location = $("#trip-destination").val().trim();
-	var timeFrame = $("#trip-timeframe").val().trim();
+	$("#trip-list").empty();
+	var city = $("#trip-city").val().trim();
+	var state = $("#trip-state").val().trim();
+	var location = city + ", " + state;
+	var dayLeaving = $("#trip-leaving").val().trim();
+	var dayReturning = $("#trip-returning").val().trim();
 	var userId = auth.currentUser.uid;
-
 	var tripId = tripData.push().key;
 
 	database.ref("trips/" + tripId).set({
-		where: location,
-		when: timeFrame,
+		city: city,
+		state: state,
+		leaving: dayLeaving,
+		returning: dayReturning,
 		owner: userId
 	});
 
-	database.ref("users/" + userId + "/trips/" + tripId).set(
+	database.ref("users/" + userId + "/trips/" + tripId).set({
 		location
-	);
+	});
 	$("#addTripModal").modal("close");
 	displayTrips();
 });
@@ -141,9 +152,8 @@ $("#set-location").on("click", function() {
 // Populate existing data from database upon clicking trip
 
 $(document).on("click", ".activate-dashboard", function() {
-	var tripId = $(".activate-dashboard").data("");
-	var currentTrip = tripData.equalTo(tripId).val();
-	console.log(currentTrip);
+	var tripId = $(".activate-dashboard").data("id");
+	showDashboard(tripId);
 });
 
 // FINISH THE ACTIVATE DASHBOARD FUNCTION
