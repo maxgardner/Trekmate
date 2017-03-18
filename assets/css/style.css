@@ -2,7 +2,7 @@ body {
 	background-image: url("http://www.powerpointhintergrund.com/uploads/blue-ppt-backgrounds-21.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
-}	
+}
 
 h1 {
 	text-align: center;
@@ -70,4 +70,10 @@ i.wi {
 .max-temp {
 	font-size: 1.5em;
 
+}
+
+/*flight autocomplete-content*/
+.autocomplete-content {
+    position: absolute;
+    top: 60px;
 }
