@@ -3,7 +3,7 @@
 function showDashboard(tripId) {
 	$("#user-trips").addClass("hide");
 	$("#dashboard").removeClass("hide").attr("data-id", tripId);
-	
+
 	database.ref("trips/" + tripId).once("value").then(function(snapshot) {
 		var city = snapshot.val().city;
 		var state = snapshot.val().state;
@@ -11,7 +11,7 @@ function showDashboard(tripId) {
 		var returning = snapshot.val().returning;
 
 		console.log(leaving);
-		
+
 		var location = city + ", " + state;
 		$("#city-name").text(location);
 		showWeather(city + "," + state);
@@ -68,5 +68,3 @@ $(document).on("click", "#add-hotel", function(event) {
 	var hotelName = $("#hotel-name").val().trim();
 	var hotelAddress = $("#hotel-address").val().trim();
 })
-
-

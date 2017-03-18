@@ -43,8 +43,6 @@ nav>ul>li {
 	margin: 0px;
 }
 
-}
-
 .loginDisplay{
 	display:none;
 }
@@ -97,4 +95,16 @@ i.wi {
 
 #trip-details {
 	margin-top: 50px;
+}
+
+/*flight autocomplete-content*/
+.autocomplete-content {
+    position: absolute;
+    top: 60px;
+}
+/*add flight submit button*/
+.modal-footer {
+    position: absolute;
+    top: 230px;
+    left: -100px;
 }
