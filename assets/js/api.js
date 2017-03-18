@@ -76,8 +76,7 @@ function parseIcon(icon) {
 
 // Pull user's weather to query Open Weather API
 
-function checkWeather(location) {
-
+function showWeather(location) {
     var queryURL = "http://api.openweathermap.org/data/2.5/weather?apikey=235f61aaee804ad248cc025993b5c001&units=imperial&q=" + location;
     // var queryURL = "http://api.openweathermap.org/data/2.5/weather?lat=" + loc.lat + "&lon=" + loc.lon;
 
@@ -91,7 +90,6 @@ function checkWeather(location) {
         // Create HTML elements for the results
         var $weatherIcon = $("<i/>").attr("class", weatherClass);
         $("#weather-icon").html($weatherIcon);
-        var $cityName = $("#city-name").text(result.name);
         var $maxTemp = $("<p/>").attr("class", "max-temp").html(result.main.temp_max + "&deg;");
         $("#max-temp").html($maxTemp);
         var $minTemp = $("<p/>").attr("class", "min-temp").html("Low: " + result.main.temp_min + "&deg;");

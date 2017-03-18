@@ -14,6 +14,7 @@ function showDashboard(tripId) {
 		
 		var location = city + ", " + state;
 		$("#city-name").text(location);
+		showWeather(city + "," + state);
 
 		var tripTimeFrame = leaving + " - " + returning;
 		$("#trip-timeframe").html(tripTimeFrame);

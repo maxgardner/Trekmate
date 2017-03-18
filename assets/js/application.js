@@ -31,21 +31,11 @@ auth.onAuthStateChanged(firebaseUser => {
 		$("#btnLogout").removeClass("hide");
 		$("#sign-in-link").addClass("hide");
 		$("#sign-up-link").addClass("hide");
-		
-		// // If they've logged in and already opened the dashboard, show them that on refresh instead of trips screen
-
-		// var tripsClass = $("#user-trips").attr("class");
-		// tripsClass = tripsClass.split(" ");
-		// var dashClass = $("#dashboard").attr("class");
-		// dashClass = dashClass.split(" ");
-
-		// if (tripsClass.indexOf("hide") > 0) {
-			
-		// }
-		if (database.ref("users/" + firebaseUser.uid)){
-		} else {
-			addUser(firebaseUser.uid, firebaseUser.email);
-		}
+		database.ref("users/" + firebaseUser.uid).once("value").then(function(snapshot) {
+			if (snapshot.key === undefined) {
+				addUser();
+			}
+		});
 		displayTrips();
 	} else {
 		$("#dashboard").addClass("hide");
@@ -100,9 +90,11 @@ $("#btnLogout").on("click", function(){
 
 // Add user to user object
 
-function addUser(userId, email) {
+function addUser() {
+	var userId = auth.currentUser.uid;
+	var email = auth.currentUser.email;
 	database.ref("users/" + userId).set({
-		"email": email
+		"email": email,
 	});
 }
 
@@ -114,7 +106,7 @@ function displayTrips() {
 	database.ref("users/" + userId + "/trips").once("value").then(function(snapshot) {
 		snapshot.forEach(function(childSnapshot) {
 			var tripId = childSnapshot.key;
-			var location = childSnapshot.val();
+			var location = childSnapshot.val().location;
 			
 			// Build HTML elements
 
@@ -133,12 +125,13 @@ $("#add-trip-link").on("click", function(){
 // Add a trip when someone fills out the form
 
 $("#set-location").on("click", function() {
+	$("#trip-list").empty();
 	var city = $("#trip-city").val().trim();
 	var state = $("#trip-state").val().trim();
+	var location = city + ", " + state;
 	var dayLeaving = $("#trip-leaving").val().trim();
 	var dayReturning = $("#trip-returning").val().trim();
 	var userId = auth.currentUser.uid;
-
 	var tripId = tripData.push().key;
 
 	database.ref("trips/" + tripId).set({
@@ -149,9 +142,9 @@ $("#set-location").on("click", function() {
 		owner: userId
 	});
 
-	database.ref("users/" + userId + "/trips/" + tripId).set(
-		city + ", " + state
-	);
+	database.ref("users/" + userId + "/trips/" + tripId).set({
+		location
+	});
 	$("#addTripModal").modal("close");
 	displayTrips();
 });

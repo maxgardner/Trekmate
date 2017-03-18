@@ -69,7 +69,17 @@ nav>ul>li {
 	float:right;
 }
 
-#city-name
+.activate-dashboard {
+	display: block;
+}
+
+#city-name {
+	font-size: 3em;
+}
+
+#trip-timeframe {
+	font-size: 1.5em;
+}
 
 i.wi {
 	font-size: 1.5em;
