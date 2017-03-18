@@ -26,13 +26,6 @@ function showDashboard(tripId) {
 	showItinerary(tripId);
 }
 
-function showFlights(tripId) {
-	database.ref("trips/" + tripId + "/flights").once("value").then(function(snapshot) {
-		var flightInfo = snapshot.val();
-
-	});
-}
-
 function showHotels(tripId) {
 	database.ref("trips/" + tripId + "/hotels").once("value").then(function(snapshot) {
 		var hotelInfo = snapshot.val();
