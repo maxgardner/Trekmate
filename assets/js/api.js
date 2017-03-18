@@ -78,27 +78,23 @@ function parseIcon(icon) {
 
 function showWeather(location) {
     var queryURL = "http://api.openweathermap.org/data/2.5/weather?apikey=235f61aaee804ad248cc025993b5c001&units=imperial&q=" + location;
-    // var queryURL = "http://api.openweathermap.org/data/2.5/weather?lat=" + loc.lat + "&lon=" + loc.lon;
-
     $.ajax({
         url: queryURL,
         method: "GET"
     }).done(function(result) {
-        console.log(result);
         var weatherClass = parseIcon(result.weather[0].icon);
 
         // Create HTML elements for the results
-        var $weatherIcon = $("<i/>").attr("class", weatherClass);
-        $("#weather-icon").html($weatherIcon);
-        var $maxTemp = $("<p/>").attr("class", "max-temp").html(result.main.temp_max + "&deg;");
-        $("#max-temp").html($maxTemp);
+        var $weatherIcon = $("<div/>").attr("id", "weather-icon");
+        var icon = $("<i/>").attr("class", weatherClass);
+        $weatherIcon.append($weatherIcon);
+        var $maxTemp = $("<span/>").attr("id", "max-temp");
+        var temp = $("<p/>").attr("class", "max-temp").html(result.main.temp_max + "&deg;");
+        $maxTemp.append(temp);
         var $minTemp = $("<p/>").attr("class", "min-temp").html("Low: " + result.main.temp_min + "&deg;");
         var $humidity = $("<p/>").html(result.main.humidity + "&#37; humidity");
-
-        $("#weather").append($minTemp, $humidity);
-
-        console.log($("#weather"));
-
+        var $break = $("<p/>").html("<br>");
+        $("#weather").append($weatherIcon, $maxTemp, $break, $minTemp, $humidity);
     }).fail(function(error) {
         console.log("Error: " + error);
     });
