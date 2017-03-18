@@ -45,6 +45,9 @@ auth.onAuthStateChanged(firebaseUser => {
 // Open sign-in modal upon user clicking "Sign In" button
 $("#sign-in-link").on("click", function() {
 	$('#signInModal').modal();
+	$('#sign-in-title').text("Sign In");
+	$('#btnLogin').removeClass('hide');
+	$('#btnSignUp').addClass('hide');
 	$("#txtEmail").attr("value", "");
 	$("#txtPassword").attr("value", "");
 });
@@ -143,7 +146,13 @@ $("#set-location").on("click", function() {
 		location
 	);
 	$("#addTripModal").modal("close");
+	$('#closeModal').modal('close');
 	displayTrips();
+});
+$('#back2Trips').on("click", function(){
+	$('#user-trips').removeClass("hide");
+	$("#dashboard").addClass("hide");
+	$('#back2Trips').addClass("hide");
 });
 
 // Populate existing data from database upon clicking trip

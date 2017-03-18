@@ -1,30 +1,25 @@
 <!DOCTYPE html>
 <html>
 
- <head>
+<head>
     <link rel="stylesheet" href="assets/css/reset.css">
-
     <!-- Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
-
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.js"></script>
-
     <!-- Weather icons library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css">
-
     <!-- <link rel="stylesheet" href="assets/css/reset.css"> -->
-    <link type="text/css" rel="stylesheet" href="assets/css/style.css"/>
-
+    <link type="text/css" rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
+
 
 <!-- Sign In/Sign Up Modal -->
   <div id="signInModal" class="modal">
@@ -36,7 +31,7 @@
       <label for="password">Password</label>
     </div>
     <div class="modal-footer">
-      <a id="btnLogin" href="#!" class="modal-action waves-effect waves-green btn-flat">Sign In</a>
+      <a id="btnLogin" href="#!" class="modal-action waves-effect waves-green btn-flat hide">Sign In</a>
       <a id="btnSignUp" href="#!" class="modal-action waves-effect waves-green btn-flat hide">Sign Up</a>
     </div>
   </div>
@@ -56,83 +51,98 @@
   </div>
 
 <!-- Add Hotel Modal -->
-  <div id="addHotelModal" class="modal">
-    <div class="modal-content">
-      <h4 id="sign-in-title">Add A Hotel</h4>
-      <input placeholder="Hotel Name" id="hotelName" type="text" class="validate">
-      <input placeholder="Phone Number" id="hotelNumber" type="text" class="validate">
-      <input placeholder="Address (Ex. 1900 University Ave Austin TX, 78705)" id="hotelAddress" type="text" class="validate">
+    <div id="addHotelModal" class="modal">
+        <div class="modal-content">
+          <h4 id="sign-in-title">Add A Hotel</h4>
+          <input placeholder="Hotel Name" id="hotelName" type="text" class="validate">
+          <input placeholder="Phone Number" id="hotelNumber" type="text" class="validate">
+          <input placeholder="Address (Ex. 1900 University Ave Austin TX, 78705)" id="hotelAddress" type="text" class="validate">
+        </div>
+        <div class="modal-footer">
+          <a id="addHotel" href="#!" class="modal-action waves-effect waves-green btn">Go</a>
+        </div>
     </div>
-    <div class="modal-footer">
-      <a id="addHotel" href="#!" class="modal-action waves-effect waves-green btn">Go</a>
-    </div>
-  </div>
 
-<!-- Navigation menu -->
+<!-- Add Transport Modal -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <input placeholder="Car Rental Name" id="carRentalName" type="text" class="validate">
+            <input placeholder="Car Rental Confirmation" id="carRentalConfirmation" type="text" class="validate">
+            <input placeholder="Contact Number (Ex. 555-555-5555)" id="rentalNumber" type="text" class="validate">
+        </div>
+        <div class="modal-footer">
+          <button class="btn" id="closeModal">Submit</button>
+        </div>
+    </div>
+
+<!-- Add Activity Modal -->
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <input placeholder="Activity" id="activityModal" type="text" class="validate">
+         </div>   
+    </div>
+    
+    <!-- Navigation menu -->
     <div class="container">
         <div id="login">
             <div class="row">
                 <div class="col s4">
-                    <img id="logo" class="reponsive-img" src="assets/images/logo.png" alt="TrekMate"}>
+                    <img id="logo" class="reponsive-img" src="assets/images/logo.png" alt="TrekMate" }>
                 </div>
-                <div class="col s5"></div>
-                <div class="col s3">
+                <div class="col s4"></div>
+                <div class="col s4">
                     <div class="nav-links">
                         <ul class="right hide-on-sm-and-down">
-                            <li><a class="waves-effect waves-light btn modal-trigger hide" href="#signInModal" id="sign-in-link">Sign In</a></li>
+                            <li><a class="waves-effect waves-light btn modal-trigger" href="#signInModal" id="sign-in-link">Sign In</a></li>
                             <br>
-                            <li><a class="waves-effect waves-light btn hide" href="#signInModal" id="sign-up-link">Sign Up</a></li>
-                            <li><a class="waves-effect waves-light btn hide" id="btnLogout">Sign Off</a></li>
+                            <li><a class="waves-effect waves-light btn" href="#signInModal" id="sign-up-link">Sign Up</a></li>
+                            <li><a class="waves-effect waves-light btn hide" id="btnLogout">Sign Off</a></li><br>
+                            <li><a class="waves-effect waves-light btn hide" id="back2Trips">Trips List</a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="col s1"></div>
             </div>
-
-
-
         </div>
     </div>
-
-
+    <!-- End Navigation menu -->
+    
     <!-- Destination page -->
     <div id="user-trips" class="container content hide">
         <div class="row valign-wrapper">
-        <div class="col s4 offset-s4 valign">
-          <div class="card darken-1">
-            <div class="card-content">
-              <span id="trips-title" class="card-title">Pick A Trip</span>
-              <p id="trip-list"></p>
+            <div class="col s4 offset-s4 valign">
+                <div class="card darken-1">
+                    <div class="card-content">
+                        <span id="trips-title" class="card-title">Pick A Trip</span>
+                        <p id="trip-list"></p>
+                    </div>
+                    <div class="card-action">
+                        <a class="waves-effect waves-light btn valign" href="#addTripModal" id="add-trip-link">Add A Trip</a>
+                    </div>
+                </div>
             </div>
-            <div class="card-action">
-              <a class="waves-effect waves-light btn valign" href="#addTripModal" id="add-trip-link">Add A Trip</a>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
     <!-- End of Destination page -->
-
+    
     <!-- DASH BOARD -->
-  <div id="dashboard" class="container content hide">
-       <div class="row">
-            <div class="col s2"></div>
+    <div id="dashboard" class="container content hide">
+        <div class="row">
             <div class="col s4">
-                <span id="city-name"></span><br>
+                <span id="city-name"></span>
+                <br>
                 <span id="trip-timeframe"></span>
             </div>
-            <!-- <div class="col s2"></div> -->
+            <div class="col s4"></div>
             <div class="col s4">
                 <div class="card" id="wCard">
                     <div class="card-image">
-           <!-- <img src="http://il2.picdn.net/shutterstock/videos/15817735/thumb/1.jpg?i10c=img.resize(height:160)""> -->
-              <!-- <span class="card-title">Card Title</span> -->
-                </div>
+                    </div>
                     <div class="card-content">
                         <div id="weather">
                             <div id="weather-icon"></div>
-                                <span id="max-temp"></span>
-                            <br><br>
+                            <span id="max-temp"></span>
+                            <br>
+                            <br>
                         </div>
                     </div>
                     <div class="card-action">
@@ -140,14 +150,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col s2">
         </div>
-
         <div id="trip-details" class="row">
-            <div class="col s1"></div>
+            <div class="row"></div>
+            <!-- <div class="col s1"></div> -->
             <div class="col s4">
-                <!-- add flight from database -->
-
 
 <!-- Flight card -->
 
@@ -158,7 +165,8 @@
             <div class="card-content">
               <!-- Add Flight Modal Trigger -->
               <a class="waves-effect waves-light btn" href="#modal1">Add Flight</a>
-      <!-- Modal Structure -->
+
+      <!-- Flight modal -->
       <div id="modal1" class="modal">
           <div class="modal-content">
               <!-- autocomplete example -->
@@ -188,24 +196,19 @@
       <!-- End flight modal -->
 
         <span class="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
-
                         <!-- <p>Flight</p> -->
                     </div>
                     <!-- id for flight status -->
                     <div class="card-reveal">
-
                         <span class="card-title grey-text text-darken-4">Flight<i class="material-icons right">close</i></span>
-
                         <p id="flightStatus"></p>
-                        <input placeholder="Placeholder" id="reservFly" type="text" class="validate">
-                        <label for="reservFly">Reservation Number</label>
                     </div>
                 </div>
             </div>
-            <!-- <div class="col s2"></div> -->
 
 <!-- Hotel card -->
 
+            <div class="col s4"></div>
             <div class="col s4">
                 <div class="card small">
                     <div class="card-image waves-effect waves-block waves-light">
@@ -213,71 +216,64 @@
                     </div>
                     <div class="card-content">
                         <span class="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
-                        <a class="waves-effect waves-light btn" id="#add-hotel" href="#addHotelModal">Add Hotel</a>
-                        <!-- <p>Hotel</p> -->
+                        <input class="waves-effect waves-light btn" id="add-hotel" href="#addHotelModal" type="submit" value="Add Hotel">
                     </div>
                     <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4">Hotel<i class="material-icons right">close</i></span>
                         <span id="userHotel"></span>
-                        <input placeholder="Placeholder" id="reservHotel" type="text" class="validate">
-                        <label for="reservHotel">Reservation Number</label>
                     </div>
                 </div>
             </div>
-            <div class="col sm2"></div>
         </div>
 
 <!-- Transportation card -->
 
-        <div class="row">
-            <div class="col s1"></div>
+        <div class="row">    
+            <div class="row"></div>
+            <div class="row"></div>
             <div class="col s4">
                 <div class="card small">
                     <div class="card-image waves-effect waves-block waves-light">
                         <img class="activator" src="http://chainimage.com/images/car-wallpapers-free-download-maybach-history-1921-2013.jpg">
                     </div>
                     <div class="card-content">
+                    <a class="waves-effect waves-light btn" href="#modal2">Add Rental</a>
                         <span class="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
-                        <input class="waves-effect waves-light btn" id="add-rental" type="submit" value="Add Car Rental">
-                        <!-- <p>Car Rental</p> -->
+
+                        
+
                     </div>
                     <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4">Transportation<i class="material-icons right">close</i></span>
                         <span id="userCar"></span>
-                        <input placeholder="Placeholder" id="reservCar" type="text" class="validate">
-                        <label for="reservCar">Reservation Number</label>
                     </div>
                 </div>
             </div>
-            <div class="col s2"></div>
-
-<!-- Itinerary card -->
-
+            <div class="col s4"></div>
             <div class="col s4">
                 <div class="card small">
                     <div class="card-image waves-effect waves-block waves-light">
                         <img class="activator" src="http://images.all-free-download.com/images/graphicthumb/tourist_information_sign_192713.jpg">
                     </div>
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Tours / Events<i class="material-icons right">more_vert</i></span>
-                        <p><a href="#">This is a link</a></p>
+                        <a class="waves-effect waves-light btn" href="#modal3">Add Activity</a>
+                        <span class="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span><br>
+                        <p><a id="googleTour" target="_blank" href="#" >Activity Look Up</a></p>
+
                     </div>
                     <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Tours / Events<i class="material-icons right">close</i></span>
+                        <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
                         <div class="input-field col s12">
-                            <textarea id="textarea1" class="materialize-textarea"></textarea>
-                            <label for="textarea1">Add an Event</label>
+                            <ul id="event"></ul>
                         </div>
-                        <!-- <p>Here is some more information about this product that is only revealed once clicked on.</p> -->
                     </div>
                 </div>
             </div>
-            <div class="col s1"></div>
         </div>
     </div>
 
     <!-- End of DASH BOARD -->
-
+    
     <!-- replaced firebase data for testing -Roman -->
     <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
     <script type="text/javascript" src="assets/js/application.js"></script>
@@ -285,6 +281,6 @@
     <script src="assets/js/airlines.js" type="text/javascript"></script>
     <script src="assets/js/dashboard.js" type="text/javascript"></script>
     <script src="assets/js/flightstatsAPIokJsonP.js" type="text/javascript"></script>
-
 </body>
+
 </html>
