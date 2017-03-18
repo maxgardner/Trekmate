@@ -77,6 +77,7 @@ nav>ul>li {
 .activate-dashboard {
 	display: block;
 	padding: 20px;
+	margin-bottom: 10px;
 	text-align: center;
 	border: 2px dashed #EEE;
 }
@@ -115,7 +116,7 @@ i.wi {
 }
 
 .activities::before {
-	content: "\2022 ";
+	content: "\2022 \00a0";
 }
 
 .activities:hover {
@@ -124,6 +125,12 @@ i.wi {
 
 .activities:hover::before {
 	content: "x ";
+}
+
+.card-addition {
+	margin-bottom: 20px;
+	padding: 10px;
+	border: 1px dashed #EEE;
 }
 
 /*flight autocomplete-content*/

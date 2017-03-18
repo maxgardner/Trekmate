@@ -8,13 +8,13 @@ function showDashboard(tripId) {
 	$('#weather').empty();
 	
 	database.ref("trips/" + tripId).once("value").then(function(snapshot) {
-		var city = snapshot.val().city;
+		var city = snapshot.val().city.split(" ").join("+");
 		var state = snapshot.val().state;
 		var leaving = snapshot.val().leaving;
 		var returning = snapshot.val().returning;
 		var location = city + ", " + state;
 		$("#city-name").text(location);
-		showWeather(city + "," + state);
+		showWeather( + "," + state);
 
 		var tripTimeFrame = leaving + " - " + returning;
 		$("#trip-timeframe").html(tripTimeFrame);
@@ -31,10 +31,12 @@ function showHotels(tripId) {
 	database.ref("trips/" + tripId + "/hotels").once("value").then(function(snapshot) {
 		snapshot.forEach(function(childSnap) {
 			var hotel = childSnap.val();
+			var outerDiv = $("<div/>").attr("class", "card-addition");
 			var nameHTML = $("<p/>").attr("class", "business-name").text(hotel.name);
 			var numberHTML = $("<p/>").attr("class", "business-number").text(hotel.phone);
 			var addressHTML = $("<p/>").attr("class", "business-address").text(hotel.address);
-			$("#userHotel").append(nameHTML, numberHTML, addressHTML);
+			outerDiv.append(nameHTML, numberHTML, addressHTML);
+			$("#userHotel").append(outerDiv);
 		});
 	});
 }
@@ -43,10 +45,12 @@ function showRental(tripId) {
 	database.ref("trips/" + tripId + "/rental").once("value").then(function(snapshot) {
 		snapshot.forEach(function(childSnap) {
 			var rental = childSnap.val();
+			var outerDiv = $("<div/>").attr("class", "card-addition");
 			var nameHTML = $("<p/>").attr("class", "business-name").text(rental.name);
 			var numberHTML = $("<p/>").attr("class", "business-number").text(rental.phone);
-			var addressHTML = $("<p/>").attr("class", "business-address").text(rental.conf);
-			$("#userCar").append(nameHTML, numberHTML, addressHTML);
+			var confirmNum = $("<p/>").attr("class", "business-address").text("Confirmation #" + rental.conf);
+			outerDiv.append(nameHTML, numberHTML, confirmNum)
+			$("#userCar").append(outerDiv);
 		});
 	});
 }

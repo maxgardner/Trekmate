@@ -163,3 +163,13 @@ $(document).on("click", ".activate-dashboard", function() {
 	var tripId = $(this).data("id");
 	showDashboard(tripId);
 });
+
+// Empty Dashboard
+
+function emptyDash() {
+	$("#city-name").empty();
+	$("#trip-timeFrame").empty();
+	$("#userHotel").empty();
+	$("#userCar").empty();
+	$("#userHotel").empty();
+}

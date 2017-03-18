@@ -76,7 +76,7 @@ function parseIcon(icon) {
 // Pull user's weather to query Open Weather API
 
 function showWeather(location) {
-    var queryURL = "http://api.openweathermap.org/data/2.5/weather?apikey=235f61aaee804ad248cc025993b5c001&units=imperial&q=" + location;
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?apikey=235f61aaee804ad248cc025993b5c001&units=imperial&q=" + location;
     $.ajax({
         url: queryURL,
         method: "GET"
