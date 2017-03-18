@@ -43,7 +43,8 @@ auth.onAuthStateChanged(firebaseUser => {
 });
 
 // Open sign-in modal upon user clicking "Sign In" button
-$("#sign-in-link").on("click", function() {
+$("#sign-in-link").on("click", function(event) {
+	event.preventDefault();
 	$('#signInModal').modal();
 	$('#sign-in-title').text("Sign In");
 	$('#btnLogin').removeClass('hide');
@@ -53,7 +54,8 @@ $("#sign-in-link").on("click", function() {
 });
 
 // Change sign-in modal if user clicks "Sign Up" button
-$("#sign-up-link").on("click", function() {
+$("#sign-up-link").on("click", function(event) {
+	event.preventDefault();
 	$('#signInModal').modal();
 	$('#sign-in-title').text("Sign Up");
 	$('#btnLogin').addClass('hide');
@@ -63,7 +65,8 @@ $("#sign-up-link").on("click", function() {
 });
 
 // add login event
-$("#btnLogin").on("click", function(){
+$("#btnLogin").on("click", function(event){
+	event.preventDefault();
 	$('#signInModal').modal();
 	const email = $("#txtEmail").val();
 	const pass = $("#txtPassword").val();
@@ -73,7 +76,8 @@ $("#btnLogin").on("click", function(){
 });
 
 // User sign up
-$("#btnSignUp").on("click", function(){
+$("#btnSignUp").on("click", function(event){
+	event.preventDefault();
 	const email = $("#txtEmail").val();
 	const pass = $("#txtPassword").val();
 	//sign in
@@ -83,7 +87,8 @@ $("#btnSignUp").on("click", function(){
 });
 
 // User sign out
-$("#btnLogout").on("click", function(){
+$("#btnLogout").on("click", function(event){
+	event.preventDefault();
 	auth.signOut();
 	$("#trip-list").empty();
 });
@@ -117,13 +122,15 @@ function displayTrips() {
 
 // Pull up Add Trip modal upon clicking "Add A Trip" button
 
-$("#add-trip-link").on("click", function(){
+$("#add-trip-link").on("click", function(event) {
+	event.preventDefault();
 	$('#addTripModal').modal();
 });
 
 // Add a trip when someone fills out the form
 
-$("#set-location").on("click", function() {
+$("#set-location").on("click", function(event) {
+	event.preventDefault();
 	$("#trip-list").empty();
 	var city = $("#trip-city").val().trim();
 	var state = $("#trip-state").val().trim();
@@ -151,7 +158,8 @@ $("#set-location").on("click", function() {
 
 // Take user back to trips screen
 
-$('#back2Trips').on("click", function(){
+$('#back2Trips').on("click", function(event){
+	event.preventDefault();
 	$('#user-trips').removeClass("hide");
 	$("#dashboard").addClass("hide");
 	$('#back2Trips').addClass("hide");
@@ -159,7 +167,8 @@ $('#back2Trips').on("click", function(){
 
 // Populate existing data from database upon clicking trip
 
-$(document).on("click", ".activate-dashboard", function() {
+$(document).on("click", ".activate-dashboard", function(event) {
+	event.preventDefault();
 	var tripId = $(this).data("id");
 	showDashboard(tripId);
 });

@@ -71,7 +71,8 @@ function googleTourist(tripId){
 };
 
 // Add hotel info to database
-$(document).on("click", "#addHotel", function() {
+$(document).on("click", "#addHotel", function(event) {
+	event.preventDefault();
 	var hotelName = $("#hotelName").val().trim();
 	var hotelNumber = $("#hotelNumber").val().trim();
 	var hotelAddress = $("#hotelAddress").val().trim();
@@ -87,7 +88,8 @@ $(document).on("click", "#addHotel", function() {
 });
 
 // Add rental info to database
-$(document).on("click", "#addRental", function() {
+$(document).on("click", "#addRental", function(event) {
+	event.preventDefault();
 	var name = $("#carRentalName").val().trim();
 	var confirmation = $("#carRentalConfirmation").val().trim();
 	var number = $("#carRentalNumber").val().trim();
@@ -103,7 +105,8 @@ $(document).on("click", "#addRental", function() {
 });
 
 // Add activity to database
-$(document).on("click", "#addActivity", function() {
+$(document).on("click", "#addActivity", function(event) {
+	event.preventDefault();
 	var activity = $("#user-activity").val().trim();
 	var tripId = $("#dashboard").data("id");
 	var activityId = database.ref("trips/" + tripId + "/itinerary").push(
@@ -114,7 +117,8 @@ $(document).on("click", "#addActivity", function() {
 });
 
 // When a user clicks on an activity, delete it
-$(document).on("click", ".activities", function() {
+$(document).on("click", ".activities", function(event) {
+	event.preventDefault();
 	var activityId = $(this).data("id");
 	var tripId = $("#dashboard").data("id");
 	database.ref("trips/" + tripId + "/itinerary/" + activityId).remove();
