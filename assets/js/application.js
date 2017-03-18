@@ -26,11 +26,22 @@ const auth = firebase.auth();
 // When user's authentication status changes, show certain things on the site
 auth.onAuthStateChanged(firebaseUser => {
 	if(firebaseUser){
-		$("#user-trips").removeClass("hide");
+		$('#user-trips').removeClass('hide');
 		$('#signInModal').modal('close');
 		$("#btnLogout").removeClass("hide");
 		$("#sign-in-link").addClass("hide");
 		$("#sign-up-link").addClass("hide");
+		
+		// // If they've logged in and already opened the dashboard, show them that on refresh instead of trips screen
+
+		// var tripsClass = $("#user-trips").attr("class");
+		// tripsClass = tripsClass.split(" ");
+		// var dashClass = $("#dashboard").attr("class");
+		// dashClass = dashClass.split(" ");
+
+		// if (tripsClass.indexOf("hide") > 0) {
+			
+		// }
 		if (database.ref("users/" + firebaseUser.uid)){
 		} else {
 			addUser(firebaseUser.uid, firebaseUser.email);
@@ -122,20 +133,24 @@ $("#add-trip-link").on("click", function(){
 // Add a trip when someone fills out the form
 
 $("#set-location").on("click", function() {
-	var location = $("#trip-destination").val().trim();
-	var timeFrame = $("#trip-timeframe").val().trim();
+	var city = $("#trip-city").val().trim();
+	var state = $("#trip-state").val().trim();
+	var dayLeaving = $("#trip-leaving").val().trim();
+	var dayReturning = $("#trip-returning").val().trim();
 	var userId = auth.currentUser.uid;
 
 	var tripId = tripData.push().key;
 
 	database.ref("trips/" + tripId).set({
-		where: location,
-		when: timeFrame,
+		city: city,
+		state: state,
+		leaving: dayLeaving,
+		returning: dayReturning,
 		owner: userId
 	});
 
 	database.ref("users/" + userId + "/trips/" + tripId).set(
-		location
+		city + ", " + state
 	);
 	$("#addTripModal").modal("close");
 	displayTrips();
@@ -144,9 +159,8 @@ $("#set-location").on("click", function() {
 // Populate existing data from database upon clicking trip
 
 $(document).on("click", ".activate-dashboard", function() {
-	var tripId = $(".activate-dashboard").data("");
-	var currentTrip = tripData.equalTo(tripId).val();
-	console.log(currentTrip);
+	var tripId = $(".activate-dashboard").data("id");
+	showDashboard(tripId);
 });
 
 // FINISH THE ACTIVATE DASHBOARD FUNCTION

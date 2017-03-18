@@ -45,10 +45,10 @@
   <div id="addTripModal" class="modal">
     <div class="modal-content">
       <h4 id="sign-in-title">Add A Trip</h4>
-      <label for="trip-destination">What is your destination?</label>
-      <input id="trip-destination">
-      <label for="trip-timeframe">When are you going?</label>
-      <input id="trip-timeframe" placeholder="Ex: May 7 - May 11">
+      <input placeholder="City (Ex: Austin)" id="trip-city" type="text" class="validate">
+      <input placeholder="State (Ex: TX)" id="trip-state" type="text" class="validate">
+      <input placeholder="Day Leaving (Ex: March 11)" id="trip-leaving" type="text" class="validate">
+      <input placeholder="Day Returning (Ex: March 15)" id="trip-returning" type="text" class="validate">
     </div>
     <div class="modal-footer">
       <a id="set-location" href="#!" class="modal-action waves-effect waves-green btn">Go</a>
@@ -103,7 +103,8 @@
     <div id="dashboard" class="container content hide">
        <div class="row">
             <div class="col s4">
-                <span id="city-name"></span>
+                <span id="city-name"></span><br>
+                <span id="trip-timeframe"></span>
             </div>
             <div class="col s4"></div>
             <div class="col s4">
@@ -128,7 +129,6 @@
                 <!-- add flight from database -->
                       
                 <div class="card small">
-                    <!-- <input id="user-location" value=" "> -->
                     <div class="card-image waves-effect waves-block waves-light">
                         <img class="activator" src="http://www.mattis.aero/images/ship.jpg">
                     </div>    
@@ -150,7 +150,6 @@
             <div class="col s4">
                     
                 <div class="card small">
-                        <!-- <input id="user-location" value=" ">  -->
                     <div class="card-image waves-effect waves-block waves-light">
                         <img class="activator" src="http://flashydubai.com/images/jumeirah-beach.jpg">
                     </div>
@@ -173,7 +172,6 @@
             <div class="col s4">
                     
                 <div class="card small">
-                        <!-- <input id="user-location" value=" "> -->
                     <div class="card-image waves-effect waves-block waves-light">
                         <img class="activator" src="http://chainimage.com/images/car-wallpapers-free-download-maybach-history-1921-2013.jpg">
                     </div>
@@ -204,7 +202,7 @@
                             <textarea id="textarea1" class="materialize-textarea"></textarea>
                             <label for="textarea1">Add and Event</label>
                         </div>
-                        <!-- <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                        <!-- <p>Here is some more information about this product that is only revealed once clicked on.</p> -->
                     </div>
                 </div>
             </div>
