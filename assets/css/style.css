@@ -1,110 +1,109 @@
 body {
-	background-image: url("http://www.powerpointhintergrund.com/uploads/blue-ppt-backgrounds-21.jpg");
-	background-repeat: no-repeat;
-	background-size: cover;
+    background-image: url("http://www.powerpointhintergrund.com/uploads/blue-ppt-backgrounds-21.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 h1 {
-	text-align: center;
-	font-family: "Times New Roman", Arial, serif;
+    text-align: center;
+    font-family: "Times New Roman", Arial, serif;
 }
 
 .content {
-	margin-top: 40px;
+    margin-top: 40px;
 }
 
 #logo {
-	max-width: 300px;
-	max-height: 700px;
-	padding-top: 20px;
+    max-width: 300px;
+    max-height: 700px;
+    padding-top: 20px;
 }
 
 .nav-links {
-	margin-top: 30px;
+    margin-top: 30px;
 }
 
 nav {
-	background-color: pink;
+    background-color: pink;
 }
 
 nav>ul {
-	list-style-type: none;
+    list-style-type: none;
 }
 
 nav>ul>li {
-	display: inline-block;
+    display: inline-block;
 }
 
 .card {
-	max-height: 600px;
-	max-width: 400px;
-	image-rendering: 100px 100px;
-	line-height: 15px;
-	margin: 0px;
+    max-height: 600px;
+    max-width: 400px;
+    image-rendering: 100px 100px;
+    line-height: 15px;
+    margin: 0px;
 }
 
-.loginDisplay{
-	display:none;
+.loginDisplay {
+    display: none;
 }
 
 .btn {
-	background: #5F676B;
-	overflow: hidden;
-    margin-left:auto;
-    margin-right:0px;
+    background: #5F676B;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: 0px;
 }
 
 .btn:hover {
-	background: #0070BB;
+    background: #0070BB;
 }
 
 #weather-icon {
-	float: left;
-	margin-right: 10px;
+    float: left;
+    margin-right: 10px;
 }
 
 #weather {
-	/*background-color: skyblue;*/
+    /*background-color: skyblue;*/
 }
 
 #wCard {
-	max-height: 150px;
-	max-width: 400px;
-	float:right;
+    max-height: 150px;
+    max-width: 400px;
+    float: right;
 }
 
 .activate-dashboard {
-	display: block;
+    display: block;
 }
 
 #city-name {
-	font-size: 3em;
+    font-size: 3em;
 }
 
 #trip-timeframe {
-	font-size: 1.5em;
+    font-size: 1.5em;
 }
 
 i.wi {
-	font-size: 1.5em;
+    font-size: 1.5em;
 }
 
 .max-temp {
-	font-size: 1.5em;
+    font-size: 1.5em;
 }
 
 #trip-details {
-	margin-top: 50px;
+    margin-top: 50px;
 }
 
+
 /*flight autocomplete-content*/
+
 .autocomplete-content {
     position: absolute;
     top: 60px;
 }
+
+
 /*add flight submit button*/
-.modal-footer {
-    position: absolute;
-    top: 230px;
-    left: -100px;
-}

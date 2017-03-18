@@ -71,16 +71,28 @@
   </div>
 
 <!-- Add Transport Modal -->
-  <div id="addTripModal" class="modal">
+  
+
+  <div id="modal2" class="modal">
     <div class="modal-content">
-      <h4 id="sign-in-title">Add A Trip</h4>
-      <input placeholder="City (Ex: Austin)" id="trip-city" type="text" class="validate">
-      <input placeholder="State (Ex: TX)" id="trip-state" type="text" class="validate">
-      <input placeholder="Day Leaving (Ex: March 11)" id="trip-leaving" type="text" class="validate">
-      <input placeholder="Day Returning (Ex: March 15)" id="trip-returning" type="text" class="validate">
+        
+        <input placeholder="Car Rental Name" id="carRentalName" type="text" class="validate">
+        <label for="carRentalName"></label>
+        <input placeholder="Car Rental Confirmation" id="carRentalConfirmation" type="text" class="validate">
+        <label for="carRenatlConfirmation"></label>
+        <input placeholder="Contact Number (Ex. 555-555-5555)" id="rentalNumber" type="text" class="validate">
+        <label for="rentalNumber" type="text" class="validate">
     </div>
     <div class="modal-footer">
-      <a id="set-location" href="#!" class="modal-action waves-effect waves-green btn">Go</a>
+      <button class="btn" id="closeModal">Submit</button>
+    </div>
+
+  </div>
+
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+        <input placeholder="Activity" id="activityModal" type="text" class="validate">
+        <label for="activityModal" type="text" class="validate">
     </div>
   </div>
 
@@ -98,7 +110,8 @@
                             <li><a class="waves-effect waves-light btn modal-trigger hide" href="#signInModal" id="sign-in-link">Sign In</a></li>
                             <br>
                             <li><a class="waves-effect waves-light btn hide" href="#signInModal" id="sign-up-link">Sign Up</a></li>
-                            <li><a class="waves-effect waves-light btn hide" id="btnLogout">Sign Off</a></li>
+                            <li><a class="waves-effect waves-light btn hide" id="btnLogout">Sign Off</a></li><br>
+                            <li><a class="waves-effect waves-light btn hide" id="back2Trips">Trips List</a></li>
                         </ul>
                     </div>
                 </div>
@@ -243,8 +256,9 @@
                         <img class="activator" src="http://chainimage.com/images/car-wallpapers-free-download-maybach-history-1921-2013.jpg">
                     </div>
                     <div class="card-content">
+                    <a class="waves-effect waves-light btn" href="#modal2">Add Rental</a>
                         <span class="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
-                        <input class="waves-effect waves-light btn" id="add-rental" type="submit" value="Add Car Rental">
+                        
                         <!-- <p>Car Rental</p> -->
                     </div>
                     <div class="card-reveal">
@@ -262,8 +276,9 @@
                         <img class="activator" src="http://images.all-free-download.com/images/graphicthumb/tourist_information_sign_192713.jpg">
                     </div>
                     <div class="card-content">
+                        <a class="waves-effect waves-light btn" href="#modal3">Add Activity</a>
                         <span class="card-title activator grey-text text-darken-4">Tours / Events<i class="material-icons right">more_vert</i></span>
-                        <p><a id="googleTour" href="../../google.com" >This is a link</a></p>
+                        <p><a id="googleTour" target="_blank" href="#" >This is a link</a></p>
                     </div>
                     <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4">Tours / Events<i class="material-icons right">close</i></span>
@@ -278,6 +293,7 @@
             <div class="col s1"></div>
         </div>
     </div>
+    
 
     <!-- End of DASH BOARD -->
 

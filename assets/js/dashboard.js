@@ -1,10 +1,12 @@
 // Functions to display Dashboard correctly for that user
-	var location; 
+	
 
 function showDashboard(tripId) {
 	$("#user-trips").addClass("hide");
 	$("#dashboard").removeClass("hide").attr("data-id", tripId);
-
+	$('#back2Trips').removeClass("hide");
+	$('#weather').empty();
+	
 	database.ref("trips/" + tripId).once("value").then(function(snapshot) {
 		var city = snapshot.val().city;
 		var state = snapshot.val().state;
@@ -19,6 +21,7 @@ function showDashboard(tripId) {
 
 		var tripTimeFrame = leaving + " - " + returning;
 		$("#trip-timeframe").html(tripTimeFrame);
+		$("#googleTour").attr("href", "http://google.com/search#q=" + city + "+" + state + "+tourist&*");
 	});
 
 	showFlights(tripId);
