@@ -46,23 +46,31 @@ $("#btnSignUp").on("click", function(){
 // User sign out
 $("#btnLogout").on("click", function(){
 	firebase.auth().signOut();
-	
+
 })
 
 // When user's authentication status changes, show certain things on the site
-firebase.auth().onAuthStateChanged(firebaseUser => {
-	if(firebaseUser){
-		console.log(firebaseUser);
-		$("#btnLogout").removeClass("hide");
-		$("#btnLogin").addClass("hide");
-		$("#btnSignUp").addClass("hide");
-		getCurrentUser(firebaseUser.uid);
-	} else {
-		$("#btnLogout").addClass("hide");
-		$("#btnLogin").removeClass("hide");
-		$("#btnSignUp").removeClass("hide");
-		console.log("not logged in");
-}
+auth.onAuthStateChanged(firebaseUser => {
+    if(firebaseUser){
+        addUser(firebaseUser.uid, firebaseUser.email)
+        $('#user-trips').removeClass('hide');
+        $('#signInModal').modal('close');
+        $("#btnLogout").removeClass("hide");
+        $("#sign-in-link").addClass("hide");
+        $("#sign-up-link").addClass("hide");
+        displayTrips();
+    } else {
+        $("#dashboard").addClass("hide");
+        $("#user-trips").addClass("hide");
+        $("#btnLogout").addClass("hide");
+        $("#sign-in-link").removeClass("hide");
+        $("#sign-up-link").removeClass("hide");
+        $("#sign-in-title").text("Sign In");
+        $("#btnLogin").removeClass("hide");
+        $("#btnSignUp").addClass("hide");
+        console.log("not logged in");
+    }
+});
 
 // Get current user's info
 
@@ -174,4 +182,3 @@ $(document).on("click", ".activate-dashboard", function() {
 		})
 	}
 });
-
