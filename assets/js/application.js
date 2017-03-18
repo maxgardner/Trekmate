@@ -200,6 +200,7 @@ $('#back2Trips').on("click", function(event){
 	$('#user-trips').removeClass("hide");
 	$("#dashboard").addClass("hide");
 	$('#back2Trips').addClass("hide");
+	emptyDash();
 });
 
 // Populate existing data from database upon clicking trip
@@ -215,6 +216,7 @@ $(document).on("click", ".activate-dashboard", function(event) {
 function emptyDash() {
 	$("#city-name").empty();
 	$("#trip-timeFrame").empty();
+	$("#flightStatus").empty();
 	$("#userHotel").empty();
 	$("#userCar").empty();
 	$("#userHotel").empty();
