@@ -14,7 +14,7 @@ h1 {
 }
 
 #logo {
-	max-width: 400px;
+	max-width: 300px;
 	max-height: 700px;
 	padding-top: 20px;
 }
@@ -43,8 +43,6 @@ nav>ul>li {
 	margin: 0px;
 }
 
-}
-
 .loginDisplay{
 	display:none;
 }
@@ -63,6 +61,10 @@ nav>ul>li {
 #weather-icon {
 	float: left;
 	margin-right: 10px;
+}
+
+#weather {
+	/*background-color: skyblue;*/
 }
 
 #wCard {
@@ -89,4 +91,20 @@ i.wi {
 
 .max-temp {
 	font-size: 1.5em;
+}
+
+#trip-details {
+	margin-top: 50px;
+}
+
+/*flight autocomplete-content*/
+.autocomplete-content {
+    position: absolute;
+    top: 60px;
+}
+/*add flight submit button*/
+.modal-footer {
+    position: absolute;
+    top: 230px;
+    left: -100px;
 }

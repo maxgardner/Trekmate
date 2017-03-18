@@ -1,12 +1,3 @@
-/* Dave's Firebase
-// Initialize Firebase
-var config = {
-  apiKey: "AIzaSyAh2KbxBIDfaljTf-1zuxRGW2paP3TDqIU",
-  authDomain: "class-project-95553.firebaseapp.com",
-  databaseURL: "https://class-project-95553.firebaseio.com",
-  storageBucket: "class-project-95553.appspot.com",
-  messagingSenderId: "1077729059008"
-};*/
 // Initialize Firebase
 var config = {
 	apiKey: "AIzaSyAzrf8-HFMI0rYABhns7pYbWDA5No-w9mM",
@@ -32,7 +23,8 @@ auth.onAuthStateChanged(firebaseUser => {
 		$("#sign-in-link").addClass("hide");
 		$("#sign-up-link").addClass("hide");
 		database.ref("users/" + firebaseUser.uid).once("value").then(function(snapshot) {
-			if (snapshot.key === undefined) {
+			console.log(snapshot.val());
+			if (snapshot.val() === null) {
 				addUser();
 			}
 		});
@@ -79,7 +71,7 @@ $("#btnSignUp").on("click", function(){
 	const pass = $("#txtPassword").val();
 	//sign in
 	//check for real email
-	const promise = auth.createUserWithEmailAndPassword(email, pass);
+	const promise = auth.createUserWithEmailAndPassword(email, pass).then(addUser());
 	promise.catch( e=> console.log(e.message));
 });
 
@@ -106,8 +98,8 @@ function displayTrips() {
 	database.ref("users/" + userId + "/trips").once("value").then(function(snapshot) {
 		snapshot.forEach(function(childSnapshot) {
 			var tripId = childSnapshot.key;
-			var location = childSnapshot.val().location;
-			
+			var location = childSnapshot.val();
+
 			// Build HTML elements
 
 			var tripTxt = $("<span>").attr({"class":"activate-dashboard", "data-id":tripId}).text(location);
@@ -119,7 +111,7 @@ function displayTrips() {
 // Pull up Add Trip modal upon clicking "Add A Trip" button
 
 $("#add-trip-link").on("click", function(){
-	$('#addTripModal').modal();	
+	$('#addTripModal').modal();
 });
 
 // Add a trip when someone fills out the form
@@ -142,9 +134,9 @@ $("#set-location").on("click", function() {
 		owner: userId
 	});
 
-	database.ref("users/" + userId + "/trips/" + tripId).set({
+	database.ref("users/" + userId + "/trips/" + tripId).set(
 		location
-	});
+	);
 	$("#addTripModal").modal("close");
 	displayTrips();
 });
@@ -155,10 +147,6 @@ $(document).on("click", ".activate-dashboard", function() {
 	var tripId = $(".activate-dashboard").data("id");
 	showDashboard(tripId);
 });
-
-// FINISH THE ACTIVATE DASHBOARD FUNCTION
-// WRITE PLACEHOLDER FUNCTIONS TO ADD DATA TO THE DATABASE FOR EACH SECTION
-
 
 // HTML: ADD MODALS FOR EACH SECTION
 // HTML: MOVE BUTTONS TO ADD THINGS FOR EACH SECTION ON DASHBOARD

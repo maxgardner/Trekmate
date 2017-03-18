@@ -47,8 +47,8 @@
       <h4 id="sign-in-title">Add A Trip</h4>
       <input placeholder="City (Ex: Austin)" id="trip-city" type="text" class="validate">
       <input placeholder="State (Ex: TX)" id="trip-state" type="text" class="validate">
-      <input placeholder="Day Leaving (Ex: March 11)" id="trip-leaving" type="text" class="validate">
-      <input placeholder="Day Returning (Ex: March 15)" id="trip-returning" type="text" class="validate">
+      <input placeholder="Day Leaving (Ex: March 11)" id="trip-leaving" type="date" class="datepicker">
+      <input placeholder="Day Returning (Ex: March 15)" id="trip-returning" type="date" class="datepicker">
     </div>
     <div class="modal-footer">
       <a id="set-location" href="#!" class="modal-action waves-effect waves-green btn">Go</a>
@@ -56,13 +56,14 @@
   </div>
 
 <!-- Add Hotel Modal -->
-  <div id="addTripModal" class="modal">
+  <div id="addHotelModal" class="modal">
     <div class="modal-content">
-      <h4 id="sign-in-title">Add Hotel</h4>
-      <input placeholder="City (Ex: Austin)" id="trip-city" type="text" class="validate">
-      <input placeholder="State (Ex: TX)" id="trip-state" type="text" class="validate">
-      <input placeholder="Day Leaving (Ex: March 11)" id="trip-leaving" type="text" class="validate">
-      <input placeholder="Day Returning (Ex: March 15)" id="trip-returning" type="text" class="validate">
+
+      <h4 id="sign-in-title">Add A Hotel</h4>
+      <input placeholder="Hotel Name" id="hotelName" type="text" class="validate">
+      <label for="hotel-name"></label>
+      <input id="hotel-address" placeholder="Address (Ex. 1900 University Ave Austin TX, 78705)" id="hotelAddress" type="text" class="validate">
+      <label for="hotel-address"></label>
     </div>
     <div class="modal-footer">
       <a id="set-location" href="#!" class="modal-action waves-effect waves-green btn">Go</a>
@@ -88,7 +89,7 @@
         <div id="login">
             <div class="row">
                 <div class="col s4">
-                    <img id="logo" class="reponsive-img" src="assets/images/logo.png" alt="TrekMate">
+                    <img id="logo" class="reponsive-img" src="assets/images/logo.png" alt="TrekMate"}>
                 </div>
                 <div class="col s5"></div>
                 <div class="col s3">
@@ -101,7 +102,11 @@
                         </ul>
                     </div>
                 </div>
+                <div class="col s1"></div>
             </div>
+
+
+
         </div>
     </div>
 
@@ -123,15 +128,16 @@
       </div>
     </div>
     <!-- End of Destination page -->
-     
+
     <!-- DASH BOARD -->
-    <div id="dashboard" class="container content hide">
+  <div id="dashboard" class="container content hide">
        <div class="row">
+            <div class="col s2"></div>
             <div class="col s4">
                 <span id="city-name"></span><br>
                 <span id="trip-timeframe"></span>
             </div>
-            <div class="col s4"></div>
+            <!-- <div class="col s2"></div> -->
             <div class="col s4">
                 <div class="card" id="wCard">
                     <div class="card-image">
@@ -147,39 +153,68 @@
                     </div>
                     <div class="card-action">
                         <p class="weather-forecast"><a href="#">5-Day Forecast</a></p>
-                    </div>  
+                    </div>
                 </div>
             </div>
-        </div> 
-        
-        <div class="row">
+            <div class="col s2">
+        </div>
+
+        <div id="trip-details" class="row">
             <div class="col s1"></div>
             <div class="col s4">
                 <!-- add flight from database -->
-                      
+
                 <div class="card small">
                     <div class="card-image waves-effect waves-block waves-light">
                         <img class="activator" src="http://www.mattis.aero/images/ship.jpg">
-                    </div>    
+                    </div>
                     <div class="card-content">
-                        <input class="waves-effect waves-light btn" id="add-flight" type="submit" value="Add Flight"><span class="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
-                        
+                      <!-- Add Flight Modal Trigger -->
+                      <a class="waves-effect waves-light btn" href="#modal1">Add Flight</a>
+                      <!-- Modal Structure -->
+                      <div id="modal1" class="modal">
+                          <div class="modal-content">
+                              <!-- autocomplete example -->
+                              <div class="row">
+                                  <div class="col s12">
+                                      <div class="row">
+                                          <div class="input-field col s12">
+                                              <i class="material-icons prefix">textsms</i>
+                                              <input type="text" id="autocomplete-input" class="autocomplete">
+                                              <label for="autocomplete-input">Airline</label>
+
+                                              <input id="flightDate" type="date" class="datepicker" value="Flight Date">
+
+                                              <input id="flightNumber" type="text" value="Flight Number">
+
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="modal-footer">
+                              <!-- Button triggers new topic to be added -->
+                              <input id="flight-info" class="waves-effect waves-light btn" type="submit" value="Submit">
+                          </div>
+                      </div>
+
+<span class="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
+
                         <!-- <p>Flight</p> -->
                     </div>
                     <!-- id for flight status -->
                     <div class="card-reveal">
-                        
+
                         <span class="card-title grey-text text-darken-4">Flight<i class="material-icons right">close</i></span>
-                        
+
                         <p id="flightStatus"></p>
                         <input placeholder="Placeholder" id="reservFly" type="text" class="validate">
                         <label for="reservFly">Reservation Number</label>
                     </div>
                 </div>
             </div>
-            <div class="col s2"></div>
+            <!-- <div class="col s2"></div> -->
             <div class="col s4">
-                    
                 <div class="card small">
                     <div class="card-image waves-effect waves-block waves-light">
                         <img class="activator" src="http://flashydubai.com/images/jumeirah-beach.jpg">
@@ -197,13 +232,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col sm1"></div>
-        </div>    
+            <div class="col sm2"></div>
+        </div>
 
         <div class="row">
             <div class="col s1"></div>
             <div class="col s4">
-                    
                 <div class="card small">
                     <div class="card-image waves-effect waves-block waves-light">
                         <img class="activator" src="http://chainimage.com/images/car-wallpapers-free-download-maybach-history-1921-2013.jpg">
@@ -245,13 +279,15 @@
         </div>
     </div>
 
-    <!-- End of DASH BOARD -->  
-      
-    <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+    <!-- End of DASH BOARD -->
+
+    <!-- replaced firebase data for testing -Roman -->
+    <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
     <script type="text/javascript" src="assets/js/application.js"></script>
     <script src="assets/js/api.js" type="text/javascript"></script>
+    <script src="assets/js/airlines.js" type="text/javascript"></script>
     <script src="assets/js/dashboard.js" type="text/javascript"></script>
     <script src="assets/js/flightstatsAPIokJsonP.js" type="text/javascript"></script>
-    
+
 </body>
 </html>
