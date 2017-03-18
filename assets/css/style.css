@@ -87,6 +87,18 @@ nav>ul>li {
     display: block;
 }
 
+.delete-trip {
+	display: block;
+	padding: 20px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.delete-trip:hover {
+	background-color: #f44336;
+    display: block;
+}
+
 #city-name {
     font-size: 3em;
     margin-bottom: 20px;

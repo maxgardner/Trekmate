@@ -107,6 +107,7 @@ function addUser() {
 // Display user's trips on login
 
 function displayTrips() {
+	$("#trip-list").empty();
 	var userId = auth.currentUser.uid;
 	database.ref("users/" + userId + "/trips").once("value").then(function(snapshot) {
 		snapshot.forEach(function(childSnapshot) {
@@ -120,6 +121,41 @@ function displayTrips() {
 		});
 	});
 }
+
+// Display user's trips to delete
+
+function displayTripsDelete() {
+	$("#deleteTrips").empty();
+	var userId = auth.currentUser.uid;
+	database.ref("users/" + userId + "/trips").once("value").then(function(snapshot) {
+		snapshot.forEach(function(childSnapshot) {
+			var tripId = childSnapshot.key;
+			var location = childSnapshot.val();
+
+			// Build HTML elements
+
+			var tripTxt = $("<span>").attr({"class":"delete-trip", "data-id":tripId}).text(location);
+			$("#deleteTrips").append(tripTxt);
+		});
+	});
+}
+
+$("#deleteATrip").on("click", function() {
+	displayTripsDelete();
+});
+
+// Delete trip from database
+
+$(document).on("click", ".delete-trip", function() {
+	var tripId = $(this).data("id");
+	var userId = auth.currentUser.uid;
+
+	database.ref("trips/" + tripId).remove();
+	database.ref("users/" + userId + "/trips/" + tripId).remove();
+
+	$("#removeTripModal").modal("close");
+	displayTrips();
+});
 
 // Pull up Add Trip modal upon clicking "Add A Trip" button
 
