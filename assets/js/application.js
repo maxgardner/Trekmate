@@ -25,28 +25,25 @@ const auth = firebase.auth();
 
 // When user's authentication status changes, show certain things on the site
 auth.onAuthStateChanged(firebaseUser => {
-	if(firebaseUser){
-		$("#user-trips").removeClass("hide");
-		$('#signInModal').modal('close');
-		$("#btnLogout").removeClass("hide");
-		$("#sign-in-link").addClass("hide");
-		$("#sign-up-link").addClass("hide");
-		if (database.ref("users/" + firebaseUser.uid)){
-		} else {
-			addUser(firebaseUser.uid, firebaseUser.email);
-		}
-		displayTrips();
-	} else {
-		$("#dashboard").addClass("hide");
-		$("#user-trips").addClass("hide");
-		$("#btnLogout").addClass("hide");
-		$("#sign-in-link").removeClass("hide");
-		$("#sign-up-link").removeClass("hide");
-		$("#sign-in-title").text("Sign In");
-		$("#btnLogin").removeClass("hide");
-		$("#btnSignUp").addClass("hide");
-		console.log("not logged in");
-	}
+    if(firebaseUser){
+        addUser(firebaseUser.uid, firebaseUser.email)
+        $('#user-trips').removeClass('hide');
+        $('#signInModal').modal('close');
+        $("#btnLogout").removeClass("hide");
+        $("#sign-in-link").addClass("hide");
+        $("#sign-up-link").addClass("hide");
+        displayTrips();
+    } else {
+        $("#dashboard").addClass("hide");
+        $("#user-trips").addClass("hide");
+        $("#btnLogout").addClass("hide");
+        $("#sign-in-link").removeClass("hide");
+        $("#sign-up-link").removeClass("hide");
+        $("#sign-in-title").text("Sign In");
+        $("#btnLogin").removeClass("hide");
+        $("#btnSignUp").addClass("hide");
+        console.log("not logged in");
+    }
 });
 
 // Open sign-in modal upon user clicking "Sign In" button
