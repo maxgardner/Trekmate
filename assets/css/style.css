@@ -6,13 +6,21 @@ body {
 
 h1 {
 	text-align: center;
-	font-family: "Times New Roman", Ariel, serif;
+	font-family: "Times New Roman", Arial, serif;
+}
+
+.content {
+	margin-top: 40px;
 }
 
 #logo {
 	max-width: 400px;
 	max-height: 700px;
 	padding-top: 20px;
+}
+
+.nav-links {
+	margin-top: 30px;
 }
 
 nav {
@@ -27,14 +35,12 @@ nav>ul>li {
 	display: inline-block;
 }
 
-=======
->>>>>>> master
 .card {
 	max-height: 600px;
 	max-width: 400px;
 	image-rendering: 100px 100px;
 	line-height: 15px;
-	margin; 0px;
+	margin: 0px;
 }
 
 .loginDisplay{
@@ -60,7 +66,19 @@ nav>ul>li {
 #wCard {
 	max-height: 150px;
 	max-width: 400px;
-	float:rigth;
+	float:right;
+}
+
+.activate-dashboard {
+	display: block;
+}
+
+#city-name {
+	font-size: 3em;
+}
+
+#trip-timeframe {
+	font-size: 1.5em;
 }
 
 i.wi {
@@ -69,11 +87,16 @@ i.wi {
 
 .max-temp {
 	font-size: 1.5em;
-
 }
 
 /*flight autocomplete-content*/
 .autocomplete-content {
     position: absolute;
     top: 60px;
+}
+/*add flight submit button*/
+.modal-footer {
+    position: absolute;
+    top: 230px;
+    left: -100px;
 }

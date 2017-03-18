@@ -1,184 +1,156 @@
-// Initialize Firebase
-var config = {
-  apiKey: "AIzaSyAh2KbxBIDfaljTf-1zuxRGW2paP3TDqIU",
-  authDomain: "class-project-95553.firebaseapp.com",
-  databaseURL: "https://class-project-95553.firebaseio.com",
-  storageBucket: "class-project-95553.appspot.com",
-  messagingSenderId: "1077729059008"
-};
-firebase.initializeApp(config);
+// replaced firebase data for testing -Roman
+ // Initialize Firebase
+ var config = {
+	 apiKey: "AIzaSyA-3xG87C837XSmWA_Tag3TXufDig9ZrTE",
+	 authDomain: "trekmate-16f2a.firebaseapp.com",
+	 databaseURL: "https://trekmate-16f2a.firebaseio.com",
+	 storageBucket: "trekmate-16f2a.appspot.com",
+	 messagingSenderId: "82541813799"
+ };
+ firebase.initializeApp(config);
 
 // Store database paths in global variables
-var database = firebase.database();
-var userData = firebase.database().ref("/users");
-var tripData = firebase.database().ref("/trips");
+const database = firebase.database();
+const userData = firebase.database().ref("users/");
+const tripData = firebase.database().ref("trips/");
+const auth = firebase.auth();
 
-// getting all the elements in the dom
-const txtEmail = $("#txtEmail");
-const txtPassword = $("#txtPassword");
-const btnLogin = $("#btnLogin");
-const btnSignUp = $("#btnSignUp");
-const btnLogout = $("#btnLogout");
+// When user's authentication status changes, show certain things on the site
+auth.onAuthStateChanged(firebaseUser => {
+	if(firebaseUser){
+		$('#user-trips').removeClass('hide');
+		$('#signInModal').modal('close');
+		$("#btnLogout").removeClass("hide");
+		$("#sign-in-link").addClass("hide");
+		$("#sign-up-link").addClass("hide");
+		database.ref("users/" + firebaseUser.uid).once("value").then(function(snapshot) {
+			if (snapshot.key === undefined) {
+				addUser();
+			}
+		});
+		displayTrips();
+	} else {
+		$("#dashboard").addClass("hide");
+		$("#user-trips").addClass("hide");
+		$("#btnLogout").addClass("hide");
+		$("#sign-in-link").removeClass("hide");
+		$("#sign-up-link").removeClass("hide");
+		$("#sign-in-title").text("Sign In");
+		$("#btnLogin").removeClass("hide");
+		$("#btnSignUp").addClass("hide");
+		console.log("not logged in");
+	}
+});
+
+// Open sign-in modal upon user clicking "Sign In" button
+$("#sign-in-link").on("click", function() {
+	$('#signInModal').modal();
+});
+
+// Change sign-in modal if user clicks "Sign Up" button
+$("#sign-up-link").on("click", function() {
+	$('#signInModal').modal();
+	$('#sign-in-title').text("Sign Up");
+	$('#btnLogin').addClass('hide');
+	$('#btnSignUp').removeClass('hide');
+});
 
 // add login event
 $("#btnLogin").on("click", function(){
-	const email = txtEmail.val();
-	const pass = txtPassword.val();
-	const auth = firebase.auth();
-	console.log("buttton worked");
+	$('#signInModal').modal();
+	const email = $("#txtEmail").val();
+	const pass = $("#txtPassword").val();
 	//sign in
 	const promise = auth.signInWithEmailAndPassword(email, pass);
 	promise.catch( e=> console.log(e.message));
-})
+});
 
 // User sign up
-
 $("#btnSignUp").on("click", function(){
-	const email = txtEmail.val();
-	const pass = txtPassword.val();
-	const auth = firebase.auth();
+	const email = $("#txtEmail").val();
+	const pass = $("#txtPassword").val();
 	//sign in
 	//check for real email
 	const promise = auth.createUserWithEmailAndPassword(email, pass);
 	promise.catch( e=> console.log(e.message));
-})
+});
 
 // User sign out
 $("#btnLogout").on("click", function(){
-	firebase.auth().signOut();
-
-})
-
-// When user's authentication status changes, show certain things on the site
-auth.onAuthStateChanged(firebaseUser => {
-    if(firebaseUser){
-        addUser(firebaseUser.uid, firebaseUser.email)
-        $('#user-trips').removeClass('hide');
-        $('#signInModal').modal('close');
-        $("#btnLogout").removeClass("hide");
-        $("#sign-in-link").addClass("hide");
-        $("#sign-up-link").addClass("hide");
-        displayTrips();
-    } else {
-        $("#dashboard").addClass("hide");
-        $("#user-trips").addClass("hide");
-        $("#btnLogout").addClass("hide");
-        $("#sign-in-link").removeClass("hide");
-        $("#sign-up-link").removeClass("hide");
-        $("#sign-in-title").text("Sign In");
-        $("#btnLogin").removeClass("hide");
-        $("#btnSignUp").addClass("hide");
-        console.log("not logged in");
-    }
+	auth.signOut();
 });
 
-// Get current user's info
+// Add user to user object
 
-function getCurrentUser(user) {
-	var user = user;
-	var trips = database.ref("/users" + user).trips.val();
-	trips.forEach(function(snap) {
-		displayTrips(snap.key, snap.val());
+function addUser() {
+	var userId = auth.currentUser.uid;
+	var email = auth.currentUser.email;
+	database.ref("users/" + userId).set({
+		"email": email,
 	});
 }
 
 // Display user's trips on login
 
-function displayTrips(tripId, cityName) {
-	var $list = $("<ul/>");
-	var $link = $("<li/>").attr({"class":"activate-dashboard", "data-trip": tripId}).html(cityName).appendTo($list);
-	$("user-trip-list").append($list);
+function displayTrips() {
+	var userId = auth.currentUser.uid;
+	console.log(userId);
+	database.ref("users/" + userId + "/trips").once("value").then(function(snapshot) {
+		snapshot.forEach(function(childSnapshot) {
+			var tripId = childSnapshot.key;
+			var location = childSnapshot.val().location;
+
+			// Build HTML elements
+
+			var tripTxt = $("<span>").attr({"class":"activate-dashboard", "data-id":tripId}).text(location);
+			$("#trip-list").append(tripTxt);
+		});
+	});
 }
+
+// Pull up Add Trip modal upon clicking "Add A Trip" button
+
+$("#add-trip-link").on("click", function(){
+	$('#addTripModal').modal();
+});
+
+// Add a trip when someone fills out the form
+
+$("#set-location").on("click", function() {
+	$("#trip-list").empty();
+	var city = $("#trip-city").val().trim();
+	var state = $("#trip-state").val().trim();
+	var location = city + ", " + state;
+	var dayLeaving = $("#trip-leaving").val().trim();
+	var dayReturning = $("#trip-returning").val().trim();
+	var userId = auth.currentUser.uid;
+	var tripId = tripData.push().key;
+
+	database.ref("trips/" + tripId).set({
+		city: city,
+		state: state,
+		leaving: dayLeaving,
+		returning: dayReturning,
+		owner: userId
+	});
+
+	database.ref("users/" + userId + "/trips/" + tripId).set({
+		location
+	});
+	$("#addTripModal").modal("close");
+	displayTrips();
+});
 
 // Populate existing data from database upon clicking trip
 
 $(document).on("click", ".activate-dashboard", function() {
-	var tripId = $(".activate-dashboard").data();
-	var currentTrip = tripData.equalTo(tripId).val();
-	console.log(currentTrip);
+	var tripId = $(".activate-dashboard").data("id");
+	showDashboard(tripId);
 });
 
-// FOR THE WEATHER
-
-// Pull user's city input
-
-	$("#set-location").on("click", function() {
-
-		var location = $("#user-location").val().trim();
-		checkWeather(location);
-	});
+// FINISH THE ACTIVATE DASHBOARD FUNCTION
+// WRITE PLACEHOLDER FUNCTIONS TO ADD DATA TO THE DATABASE FOR EACH SECTION
 
 
-	// Figure out corresponding Weather Icons class
-
-	function parseIcon(icon) {
-		var iconToUse = "wi ";
-
-		switch(icon) {
-			case "11d":
-				iconToUse += "wi-storm-showers";
-				break;
-			case "09d":
-				iconToUse += "wi-rain";
-				break;
-			case "10d":
-				iconToUse += "wi-day-rain";
-				break;
-			case "13d":
-				iconToUse += "wi-snowflake-cold";
-				break;
-			case "50d":
-				iconToUse += "wi-fog";
-				break;
-			case "01d":
-				iconToUse += "wi-day-sunny";
-				break;
-			case "01n":
-				iconToUse += "wi-night-clear";
-				break;
-			case "02d":
-				iconToUse += "wi-day-cloudy";
-				break;
-			case "03d":
-			case "03n":
-			case "04d":
-			case "04n":
-				iconToUse += "wi-cloudy";
-				break;
-		};
-
-		return iconToUse;
-	};
-
-	// Pull user's weather to query Open Weather API
-
-	function checkWeather(location) {
-
-		var queryURL = "http://api.openweathermap.org/data/2.5/weather?apikey=235f61aaee804ad248cc025993b5c001&units=imperial&q=" + location;
-		// var queryURL = "http://api.openweathermap.org/data/2.5/weather?lat=" + loc.lat + "&lon=" + loc.lon;
-
-		$.ajax({
-			url: queryURL,
-			method: "GET"
-		}).done(function(result) {
-			console.log(result);
-			var weatherClass = parseIcon(result.weather[0].icon);
-
-			// Create HTML elements for the results
-			var $weatherIcon = $("<i/>").attr("class", weatherClass);
-			$("#weather-icon").html($weatherIcon);
-			var $cityName = $("<h5/>").text(result.name).appendTo($("#city-name"));
-			var $maxTemp = $("<p/>").attr("class", "max-temp").html(result.main.temp_max + "&deg;");
-			$("#max-temp").html($maxTemp);
-			var $minTemp = $("<p/>").attr("class", "min-temp").html("Low: " + result.main.temp_min + "&deg;");
-			var $humidity = $("<p/>").html(result.main.humidity + "&#37; humidity");
-
-			$("#weather").append($minTemp, $humidity);
-
-			console.log($("#weather"));
-
-		}).fail(function(error) {
-			console.log("Error: " + error);
-		})
-	}
-});
+// HTML: ADD MODALS FOR EACH SECTION
+// HTML: MOVE BUTTONS TO ADD THINGS FOR EACH SECTION ON DASHBOARD

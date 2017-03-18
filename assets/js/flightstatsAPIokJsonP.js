@@ -29,12 +29,15 @@ $("#add-flight").on("click", function(event) {
 
 });
 
+
 // add flight modal
 $('document').ready(function() {
 // // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
   $('.modal').modal();
 
 });
+
+// flight information
 
 var date = null;
 var res = null;
@@ -60,18 +63,15 @@ $("#flight-info").on("click", function(event) {
     airlineName = $("#autocomplete-input").val();
     flightNumber = $("#flightNumber").val();
 
+    var tripId = $("#dashboard").data("id");
+
     var flightKey = database.ref("trips/" + tripId + "/flights").push().key;
     database.ref("trips/" + tripId + "/flights" + flightKey).set({
         year: year,
-        month,
-        day,
-        airlineName,
-        flightNumber
+        month: month,
+        day: day,
+        airlineName: airlineName,
+        flightNumber: flightNumber
     });
 
 });
-
-// // datepicker
-// $('.datepicker').pickadate({
-//
-// });
