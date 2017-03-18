@@ -14,7 +14,7 @@ h1 {
 }
 
 #logo {
-	max-width: 300px;
+	max-width: 400px;
 	max-height: 700px;
 	padding-top: 20px;
 }
@@ -103,8 +103,8 @@ i.wi {
     top: 60px;
 }
 /*add flight submit button*/
-.modal-footer {
+./*modal-footer {
     position: absolute;
     top: 230px;
     left: -100px;
-}
+}*/
