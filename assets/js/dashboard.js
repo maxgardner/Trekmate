@@ -1,7 +1,9 @@
 // Functions to display Dashboard correctly for that user
-	
+
+var tripId;
 
 function showDashboard(tripId) {
+	tripId = tripId;
 	$("#user-trips").addClass("hide");
 	$("#dashboard").removeClass("hide").attr("data-id", tripId);
 	$('#back2Trips').removeClass("hide");
