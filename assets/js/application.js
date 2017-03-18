@@ -78,6 +78,7 @@ $("#btnSignUp").on("click", function(){
 // User sign out
 $("#btnLogout").on("click", function(){
 	auth.signOut();
+	
 });
 
 // Add user to user object
@@ -138,13 +139,19 @@ $("#set-location").on("click", function() {
 		location
 	);
 	$("#addTripModal").modal("close");
+	$('#closeModal').modal('close');
 	displayTrips();
+});
+$('#back2Trips').on("click", function(){
+	$('#user-trips').removeClass("hide");
+	$("#dashboard").addClass("hide");
+	$('#back2Trips').addClass("hide");
 });
 
 // Populate existing data from database upon clicking trip
 
 $(document).on("click", ".activate-dashboard", function() {
-	var tripId = $(".activate-dashboard").data("id");
+	var tripId = $(this).data("id");
 	showDashboard(tripId);
 });
 
